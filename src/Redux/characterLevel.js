@@ -5,7 +5,6 @@ import * as ActionTypes from './actionTypes'
 export const CharacterLevel = (state = {
     characterLevel: 1
 }, action) => {
-    console.log(action.type)
     switch(action.type){
         case ActionTypes.ADJUST_LEVEL:
 

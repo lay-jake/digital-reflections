@@ -42,7 +42,8 @@ export const getLevel = () =>({
 
 /** Actions for Character STATs handling */
 
-export const adjustStat = ({stat,adjustment}) =>({
+export const adjustStat = (stat,adjustment) =>(
+    {
     type: ActionTypes.ADJUST_STAT,
     payload: {stat,adjustment}
    }

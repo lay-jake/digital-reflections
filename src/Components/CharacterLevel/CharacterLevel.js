@@ -20,7 +20,8 @@ export default function CharacterLevel({charLevel,adjustLevel}){
     return(
         <>
         <button onClick={() => handleChange('-')}>-</button>
-        <h1>{charLevel}</h1>
+        <h1>Character Level</h1>
+        <h2>{charLevel}</h2>
         <button onClick={() => handleChange('+')}>+</button>
         </>
     )
