@@ -27,3 +27,28 @@ export const fetchClasses = (dispatch) =>{
     //TO DO - More indepth error handling.
     .catch( error => console.log(error.message))
 }}
+
+/** Actions for Character Level handling */
+
+export const adjustLevel = (adjustment) =>({
+    type: ActionTypes.ADJUST_LEVEL,
+    payload: adjustment
+   }
+)
+export const getLevel = () =>({
+    type: ActionTypes.GET_LEVEL
+   }
+)
+
+/** Actions for Character STATs handling */
+
+export const adjustStat = ({stat,adjustment}) =>({
+    type: ActionTypes.ADJUST_STAT,
+    payload: {stat,adjustment}
+   }
+)
+export const getStat = (stat) =>({
+    type: ActionTypes.GET_STAT,
+    payload:stat
+   }
+)
