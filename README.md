@@ -4,7 +4,9 @@ This project is for personal use only.
 Character sheet is powered by the public api hosted at [https://api.pathfinder2.fr].
 
 ## Completed Items
-Load Classes available through API
+
+✅Load Classes available through API
+
 ✅ Allow user to type in Character Name
 
 ✅ Allow user to adjust level
