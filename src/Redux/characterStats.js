@@ -1,5 +1,9 @@
 import * as ActionTypes from './actionTypes'
-
+/**
+ * 
+ * @param {*} statValue - Hard Stat Value number IE 20 Dexterity, 18 Wisdom etc..
+ * @returns Positive or Negative Integer representing the bonus of that stat to be applied when applicable.
+ */
 const statBonus = (statValue) =>{
     return Math.floor((statValue - 10)/2)
 
@@ -14,11 +18,19 @@ export const CharacterStats = (state = {
     charisma:{value:8,bonus:-1}
 }, action) => {
     switch(action.type){
+        /**
+         * Action Type - ADJUST STAT 
+         * PAYLOAD - [STAT,ADJUSTMENT] - STAT: Which of the stats to be modified, ADJUSTMENT: Increased or Decreased
+         * 
+         * RETURNS - Modifies REDUX stat to new STAT Number and Recalcs BONUS and Updates as needed.
+         */
         case ActionTypes.ADJUST_STAT:
             switch((action.payload.stat).toLowerCase()){
+                
+                /** Each case returns previous state as we are only altering one stat at a time, then updates appropiate case and uses statBonus to calculate new Stat Bonus */
                 case "strength":
                     if(action.payload.adjustment === '-'){
-                        return {...state, strength:{value: state.strength.value - 1, bonus: statBonus(state.strength.value-1)}}
+                        return {...state, strength:{value: state.strength.value - 1, bonus: statBonus(state.strength.value - 1)}}
                     }else{
                         return {...state, strength:{value: state.strength.value + 1, bonus: statBonus(state.strength.value+1)}}
                         }               
@@ -54,6 +66,12 @@ export const CharacterStats = (state = {
                         }          
                 default: return state                 
             }
+
+                    /**
+         * Action Type - GET STAT 
+         * PAYLOAD - [STAT] - STAT: Which of the stats to be returned
+         * RETURNS - Value of the stat in redux store.
+         */
         case ActionTypes.GET_STAT:
             case "Strength":
                 return state.strength.value  
