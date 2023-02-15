@@ -1,70 +1,72 @@
 import * as ActionTypes from './actionTypes'
 
+const statBonus = (statValue) =>{
+    return Math.floor((statValue - 10)/2)
 
+}
 
 export const CharacterStats = (state = {
-    strength:8,
-    dexterity:8,
-    constitution:8,
-    wisdom:8,
-    intelligence:8,
-    charisma:8,
+    strength:{value:8,bonus:-1},
+    dexterity:{value:8,bonus:-1},
+    constitution:{value:8,bonus:-1},
+    wisdom:{value:8,bonus:-1},
+    intelligence:{value:8,bonus:-1},
+    charisma:{value:8,bonus:-1}
 }, action) => {
     switch(action.type){
         case ActionTypes.ADJUST_STAT:
             switch((action.payload.stat).toLowerCase()){
                 case "strength":
                     if(action.payload.adjustment === '-'){
-                        return {...state, strength: state.strength -1};
+                        return {...state, strength:{value: state.strength.value - 1, bonus: statBonus(state.strength.value-1)}}
                     }else{
-                        return {...state, strength: state.strength +1};
+                        return {...state, strength:{value: state.strength.value + 1, bonus: statBonus(state.strength.value+1)}}
                         }               
                 case "dexterity":
                     if(action.payload.adjustment === '-'){
-                        return {...state, dexterity: state.dexterity -1};
-                        }else{
-                        return {...state, dexterity: state.dexterity +1};
-                        }         
+                        return {...state, dexterity:{value: state.dexterity.value - 1, bonus: statBonus(state.dexterity.value-1)}}
+                    }else{
+                        return {...state, dexterity:{value: state.dexterity.value + 1, bonus: statBonus(state.dexterity.value+1)}}
+                        }               
                 case "constitution":
                     if(action.payload.adjustment === '-'){
-                        return {...state, constitution: state.constitution -1};
+                        return {...state, constitution:{value: state.constitution.value - 1, bonus: statBonus(state.constitution.value-1)}}
                     }else{
-                        return {...state, constitution: state.constitution +1};
-                        }         
+                        return {...state, constitution:{value: state.constitution.value + 1, bonus: statBonus(state.constitution.value+1)}}
+                        }              
                 case "wisdom":
-                    console.log('made it to wisdom')
                     if(action.payload.adjustment === '-'){
-                        return {...state, wisdom: state.wisdom -1};
+                        return {...state, wisdom:{value: state.wisdom.value - 1, bonus: statBonus(state.wisdom.value-1)}}
                     }else{
-                        return {...state, wisdom: state.wisdom +1};
-                        }         
+                        return {...state, wisdom:{value: state.wisdom.value + 1, bonus: statBonus(state.wisdom.value+1)}}
+                        }               
                 case "intelligence":
                     if(action.payload.adjustment === '-'){
-                        return {...state, intelligence: state.intelligence -1};
+                        return {...state, intelligence:{value: state.intelligence.value - 1, bonus: statBonus(state.intelligence.value-1)}}
                     }else{
-                        return {...state, intelligence: state.intelligence +1};
-                        }         
+                        return {...state, intelligence:{value: state.intelligence.value + 1, bonus: statBonus(state.intelligence.value+1)}}
+                        }                 
                 case "charisma":
                     if(action.payload.adjustment === '-'){
-                        return {...state, charisma: state.charisma -1};
+                        return {...state, charisma:{value: state.charisma.value - 1, bonus: statBonus(state.charisma.value-1)}}
                     }else{
-                        return {...state, charisma: state.charisma +1};
-                        }
+                        return {...state, charisma:{value: state.charisma.value + 1, bonus: statBonus(state.charisma.value+1)}}
+                        }          
                 default: return state                 
             }
         case ActionTypes.GET_STAT:
             case "Strength":
-                return state.strength   
+                return state.strength.value  
             case "Dexterity":
-                return state.dexterity 
+                return state.dexterity.value 
             case "Constitution":
-                return state.constitution 
+                return state.constitution.value
             case "Wisdom":
-                return state.wisdom 
+                return state.wisdom.value
             case "Intelligence":
-                return state.intelligence 
+                return state.intelligence.value
             case "Charisma":
-                return state.charisma 
+                return state.charisma.value
             default: return state           
     }
 }

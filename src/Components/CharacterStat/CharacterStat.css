@@ -1,0 +1,23 @@
+.character-stat-adjust{
+    display: flex;
+    gap:2vw;
+    flex-wrap: nowrap;
+    font-size: x-small;
+}
+.character-stat-bonus{
+    position: relative;
+    margin-top: 20;
+}
+.character-stat-indvidual{
+    display: grid;
+    justify-items: center;
+}
+.character-stat-value{
+    justify-self: center;
+    align-self: center;
+}
+
+.stat-adjust-button{
+    max-height: 5vh;
+    align-self: center;
+}

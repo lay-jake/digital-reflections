@@ -1,0 +1,15 @@
+.character-level-area{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5vw;
+}
+.level-adjust-area{
+    display: flex;
+    align-items: center;
+    gap: 2vw
+}
+.level-adjust-button{
+    max-height: 5vh;
+}
