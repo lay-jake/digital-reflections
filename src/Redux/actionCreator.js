@@ -1,7 +1,11 @@
 import * as ActionTypes from './actionTypes'
 import instance from '../Shared/api'
 
-/** Actions for Class loads */
+/**
+ * 
+ *  Actions for Class loads
+ * 
+ *  */
 export const classesLoading = () =>({
     type: ActionTypes.LOADING_CLASSES
    }
@@ -28,7 +32,44 @@ export const fetchClasses = (dispatch) =>{
     .catch( error => console.log(error.message))
 }}
 
-/** Actions for Character Level handling */
+
+/**
+ * 
+ *  Actions for Class loads
+ * 
+ *  */
+export const ancestriesLoading = () =>({
+    type: ActionTypes.LOADING_ANCESTRIES
+   }
+)
+
+export const addAncestries = (ancestries) =>({
+        type: ActionTypes.ADD_ANCESTRIES,
+        payload:ancestries
+       }
+    )
+export const selectAncestry = (selectedAncestry) =>({
+        type: ActionTypes.SELECT_ANCESTRY,
+        payload:selectedAncestry
+       }
+    )
+
+export const fetchAncestries = (dispatch) =>{
+    return dispatch => {
+        dispatch(ancestriesLoading());
+    
+    instance.get('ancestry')
+    .then( res => {dispatch(addAncestries(res.data))})
+    //TO DO - More indepth error handling.
+    .catch( error => console.log(error.message))
+}}
+
+
+/** 
+ * 
+ * Actions for Character Level handling 
+ * 
+ * */
 
 export const adjustLevel = (adjustment) =>({
     type: ActionTypes.ADJUST_LEVEL,

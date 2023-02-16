@@ -1,4 +1,6 @@
 .generic-info{
+    max-width: 100%;
+    min-width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -7,16 +9,17 @@
     justify-content: center;
 }
 .character-NameClass{
+    max-width: 100%;
+    min-width: 100%;
     display: flex;
-    gap: 15vw;
+   justify-content: space-evenly;
 }
 .character-stats-area{
+    min-width: 100%;
     display: flex;
     flex-direction: row;
-    display: flex;
-    justify-content: center;
-    gap: 1vw;
-    
+    justify-content: space-between;
+   
 }
 .character-stats-box{
     display: flex;
@@ -24,9 +27,15 @@
     flex-wrap: wrap;
 }
 .main-body{
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-left: 3vw;
-    margin-right: 3vw;
+    border: 1px solid black;
+    box-shadow: 3px 3px 3px  black;
+
+    color: #000000d8;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #afc2cb;
 }

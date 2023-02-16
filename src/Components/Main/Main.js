@@ -1,11 +1,13 @@
 import { Component } from "react"
-import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat } from "../../Redux/actionCreator"
+import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import CharacterClass from "../CharacterClass/CharacterClass"
 import CharacterName from "../CharacterName/CharacterName"
 import CharacterLevel from "../CharacterLevel/CharacterLevel"
 import CharacterStat from "../CharacterStat/CharacterStat"
 import './main.css'
+import CharacterAncestry from "../CharacterAncestry/CharacterAncestry"
+import CharacterDetails from "../CharacterDetails.js/characterDetails"
 
 /**
  * 
@@ -17,7 +19,8 @@ const mapStateToProps = state => {
     return{
         characterClasses: state.characterClasses,
         characterLevel: state.characterLevel,
-        characterStats: state.characterStats
+        characterStats: state.characterStats,
+        characterAncestries: state.characterAncestries,
     }
 }
 
@@ -32,9 +35,13 @@ const mapDispatchToProps = (dispatch) => ({
 
     //connecting Redux stat actions to props - raises and lowers stats or gets a specific stat
     getStat: (stat) => {dispatch(getStat(stat))},
-    adjustStat: (stat,adjustment) => {dispatch(adjustStat(stat,adjustment))
+    adjustStat: (stat,adjustment) => {dispatch(adjustStat(stat,adjustment))},
 
-}})
+     //connecting Redux ancestry actions to props
+     fetchAncestries: () => {dispatch(fetchAncestries())},
+     selectAncestry: (selectedAncestry) => {dispatch(selectAncestry(selectedAncestry))},
+
+})
 
 
 class Main extends Component{
@@ -48,18 +55,21 @@ class Main extends Component{
      */
     componentDidMount = () =>{
         this.props.fetchClasses();
+        this.props.fetchAncestries();
     }
-
+    
     render(){
      
     return(
+        
         <>
         <div className="main-body">
             <div className="generic-info">
                 <div className="character-NameClass">
+                    {console.log(this.props.characterAncestries)}
                     <CharacterName/>
                     <CharacterClass characterClasses={this.props.characterClasses.classes.results} chooseClass={this.props.selectClass}/>
-            
+                    <CharacterAncestry ancestries={this.props.characterAncestries.ancestries.results} selectAncestry={this.props.selectAncestry}/>
                     <CharacterLevel charLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}/>
                 </div>
                 <div className="character-stats-area">
@@ -71,11 +81,10 @@ class Main extends Component{
                     </div>
 
                 {/** Conditional Rendering here as HP is Unknown if no class is picked */}       
-                {this.props.characterClasses.selectedClass &&    
-                    <div className="character-defensive-area">       
-                        <h2>Hit Points</h2>
-                        <p>{(this.props.characterClasses.selectedClass.system.hp + this.props.characterStats.constitution.bonus)*this.props.characterLevel.characterLevel}</p>
-                    </div>
+                {(this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry) &&
+                    <CharacterDetails hp={((this.props.characterClasses.selectedClass.system.hp + this.props.characterStats.constitution.bonus)
+                                        * this.props.characterLevel.characterLevel) + this.props.characterAncestries.selectedAncestry.system.hp}
+                                      ancestry={this.props.characterAncestries.selectedAncestry}  />
                 }
             </div>
 

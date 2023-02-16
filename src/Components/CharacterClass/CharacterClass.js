@@ -3,7 +3,7 @@ export default function CharacterClass({characterClasses,chooseClass}){
     return(
         <div>
         <h2>Character Class</h2>
-        <h1 className="class-select-area"><i class="fa-solid fa-wand-sparkles"></i>
+        <h1 className="class-select-area"><i className="fa-solid fa-wand-sparkles"></i>
             {/** We create a drop down with options from the API for character Classes
              * When a user selects a class we send a 'chooseClass' dispatch to the Store by filtering the Class OBJ Array to match the value of the selected class.
              * We use [0] since it should be the first result returned from the filter.
