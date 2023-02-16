@@ -40,6 +40,51 @@
     padding: 5px;
     text-decoration: underline;
 }
+
+.character-savingThrows{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    column-gap: 15px;
+
+    margin-left: 5%;
+    margin-right: 5%;
+
+    /**
+    Setting up animation for the details section.
+    rolls out in 1, but delayed by 1 to allow the details section ahead of it to load first.
+    */
+    animation: rollout 1s ease-in forwards;
+    animation-delay: 1s;
+    opacity: 0;
+}
+.character-savingThrow-ind{
+    height: 150px;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1.5px black;
+    padding: 10px;
+    padding-top: 0px;
+    background-color: #E1F5FE;
+    justify-self: center;
+    align-self: center;
+
+}
+
+.character-details-section{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr ;
+    padding: 10px;
+}
+.title-details-box{
+    display: flex;
+    justify-content: space-around;
+}
 @media( max-width: 769px){
     .character-stats-area{
         display:grid;
@@ -47,5 +92,35 @@
         row-gap: 15px;
         column-gap: 15px;
         padding-bottom: 15px;
+    }
+    .character-savingThrows{
+        width: 40%;
+        display:grid;
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+        align-items: center;
+        align-content: center;
+        column-gap: 15px;
+        padding-bottom: 15px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
+
+@keyframes rollout{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: .25;
+    }
+    50%{
+        opacity: .5;
+    }
+    75%{
+        opacity: .75;
+    }
+    100%{
+        opacity: 1;
     }
 }

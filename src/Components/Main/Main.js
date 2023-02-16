@@ -81,28 +81,42 @@ class Main extends Component{
                         <CharacterStat className='character-stats-box' key={stat} stat={stat} statValue={(this.props.characterStats[stat]).value} adjustStat={this.props.adjustStat} statBonus={(this.props.characterStats[stat]).bonus}/>
                     ) })}
                     </div>
-
-                {/** Conditional Rendering here as HP is Unknown if no class is picked */}
-                <h1 className="title-text">Character Details</h1>       
+                    </div>
+            {this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry &&
+                <div className="title-details-box">        
+                    <h1 className="title-text">Character Details</h1>   
+                    <h1 className="title-text">Saving Throws</h1>    
+                </div>
+            }
+            <div className="character-details-section">                
+                {/** Conditional Rendering here as HP is Unknown if no class is picked */}     
                 {(this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry) &&
                     <CharacterDetails hp={((this.props.characterClasses.selectedClass.system.hp + this.props.characterStats.constitution.bonus)
                                         * this.props.characterLevel.characterLevel) + this.props.characterAncestries.selectedAncestry.system.hp}
                                       ancestry={this.props.characterAncestries.selectedAncestry}  />
                 }
-            </div>
-
+          
         {/** Conditional Rendering here as Saving throws are not needed if no class is picked */}    
-        {this.props.characterClasses.selectedClass &&
+        {this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry &&
+        <>
             <div className="character-savingThrows">
-                <h2>Saving Throws</h2>
-                <h4>Reflex</h4>
-                <h5>{this.props.characterClasses.selectedClass.system.savingThrows.reflex + this.props.characterLevel.characterLevel + this.props.characterStats.dexterity.bonus}</h5>
-                <h4>Fortitude</h4>
-                <h5>{this.props.characterClasses.selectedClass.system.savingThrows.fortitude + this.props.characterLevel.characterLevel + this.props.characterStats.constitution.bonus}</h5>
-                <h4>Will</h4>
-                <h5>{this.props.characterClasses.selectedClass.system.savingThrows.will + this.props.characterLevel.characterLevel + this.props.characterStats.wisdom.bonus}</h5>
-            </div>}
+                    <div className='character-savingThrow-ind'>
+                        <h2> <i className="fa-solid fa-gauge-high"></i> Reflex</h2>
+                        <p>{this.props.characterClasses.selectedClass.system.savingThrows.reflex + this.props.characterLevel.characterLevel + this.props.characterStats.dexterity.bonus}</p>
+                    </div>
+                    <div className='character-savingThrow-ind'>
+                        <h2> <i className="fa-solid fa-hand-fist"></i> Fortitude</h2>
+                        <p>{this.props.characterClasses.selectedClass.system.savingThrows.fortitude + this.props.characterLevel.characterLevel + this.props.characterStats.constitution.bonus}</p>
+                    </div>
+                    <div className='character-savingThrow-ind'>
+                        <h2> <i className="fa-solid fa-brain"></i> Will</h2>
+                        <p>{this.props.characterClasses.selectedClass.system.savingThrows.will + this.props.characterLevel.characterLevel + this.props.characterStats.wisdom.bonus}</p>
+                    </div>
+            </div>
+            </>}
         </div>
+        </div>
+
         </>
     )}
 }
