@@ -65,6 +65,7 @@ class Main extends Component{
         <>
         <div className="main-body">
             <div className="generic-info">
+                <h1 className="title-text">Character Identity</h1>
                 <div className="character-NameClass">
                     {console.log(this.props.characterAncestries)}
                     <CharacterName/>
@@ -72,6 +73,7 @@ class Main extends Component{
                     <CharacterAncestry ancestries={this.props.characterAncestries.ancestries.results} selectAncestry={this.props.selectAncestry}/>
                     <CharacterLevel charLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}/>
                 </div>
+                <h1 className="title-text">Character Ability Scores</h1>
                 <div className="character-stats-area">
                     {Object.keys(this.props.characterStats).map( (stat) => {
                     
@@ -80,7 +82,8 @@ class Main extends Component{
                     ) })}
                     </div>
 
-                {/** Conditional Rendering here as HP is Unknown if no class is picked */}       
+                {/** Conditional Rendering here as HP is Unknown if no class is picked */}
+                <h1 className="title-text">Character Details</h1>       
                 {(this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry) &&
                     <CharacterDetails hp={((this.props.characterClasses.selectedClass.system.hp + this.props.characterStats.constitution.bonus)
                                         * this.props.characterLevel.characterLevel) + this.props.characterAncestries.selectedAncestry.system.hp}

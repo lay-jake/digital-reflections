@@ -1,11 +1,10 @@
 .character-details-area{
-    min-width: 100%;
-    max-width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
+    animation: rollout 1s ease-in forwards;
 }
 
 .character-defensive-ind-box{
@@ -26,4 +25,22 @@
     margin: auto;
     display: flex;
     justify-content: center;
+}
+
+@keyframes rollout{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: .25;
+    }
+    50%{
+        opacity: .5;
+    }
+    75%{
+        opacity: .75;
+    }
+    100%{
+        opacity: 1;
+    }
 }
