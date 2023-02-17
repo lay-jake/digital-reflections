@@ -1,6 +1,10 @@
 .ancestry-select-area{
     display: flex;
     gap: 15px;
+    text-align: center;
+}
+.ancestry-select{
+    text-align: center;
 }
 
 .ancestry-select-box{

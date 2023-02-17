@@ -2,9 +2,9 @@ import { Component } from "react"
 import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
-import { Link, Navigate, Route,Routes,Switch } from "react-router-dom"
+import { Link, Navigate, Route,Routes} from "react-router-dom"
 import CharacterOverview from "../CharacterOverview/CharacterOverview"
-import Feats from "../Feats/Feats"
+
 /**
  * 
  * @param {*} state - Current state for REDUX store
@@ -64,7 +64,7 @@ class Main extends Component{
     }
     
     render(){
-     
+
     return(
         <div>
         <header> Fancy header going to go here eventually but for now click to go to feats{<Link to='/feats'> F E A T S</Link>} or click to go back {<Link to='/overview'>  O V E R V I E W</Link>}  so we can test data storage</header>
@@ -75,14 +75,15 @@ class Main extends Component{
             * Might set up a loading screen to send instead of an empty frag.
            */}  
           <Route exact path= '/overview' element={
-            this.props.characterClasses.classes.results ? 
+            this.props.characterClasses.classes.results ?
             <CharacterOverview  characterClasses = {this.props.characterClasses} selectClass={this.props.selectClass}
-                                characterAncestries = {this.props.characterAncestries} selectAncestry={this.props.selectAncestry}
+                                characterAncestries = {this.props.characterAncestries} selectAncestry={this.props.selectAncestry} selectedAncestry={this.props.characterAncestries.selectedAncestry}
                                 characterDieties={this.props.characterDieties} selectDiety={this.props.selectDiety}
                                 characterLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}
                                 characterStats={this.props.characterStats} adjustStat={this.props.adjustStat}/> : <></>}/>
+                                
 
-            <Route exact path='/feats' element={<Feats/>} />                    
+            <Route exact path='/feats' element={<div/>} />                    
         </Routes> 
         </div>
     )}
