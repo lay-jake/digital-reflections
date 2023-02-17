@@ -10,14 +10,26 @@ export default function CharacterAncestry({ancestries,selectAncestry}){
              * When a user selects a ancestry we send a 'selectAncestry' dispatch to the Store by filtering the ancestry OBJ Array to match the value of the selected ancestry.
              * We use [0] since it should be the first result returned from the filter.
              */}
-            <select className="ancestry-select-box" defaultValue='' onChange={ e => selectAncestry(ancestries.filter( (charAncestry) => {return charAncestry.name === e.target.value})[0])}>
+  
+            <select  className="ancestry-select-box" title= 'Hover over an Ancestry for brief description.' defaultValue='' onChange={ e => selectAncestry(ancestries.filter( (charAncestry) => {return charAncestry.name === e.target.value})[0])}>
+            <option class="none"  value="" disabled selected>Select Ancestry</option>
             {/**
              * We map through each of the ancestries returned by the API that are stored in our ancestries which has been passed down as a prop.
              * Each ancestry is entered as a option using it's name key.
              */}    
-            {ancestries && ancestries.map( (charAncestry) => {return <option value={charAncestry.name}>{charAncestry.name}</option>}
-            )}
+            {ancestries && ancestries.map( (charAncestry) =>{
+
+                  /**
+                 * We split the description by the phrase 'You Might...' since it goes into WAY to much detail for a short snippet - its like 600 characters easy.
+                 *  */                  
+
+                const description = charAncestry.system.description.value.replace( /(<([^>]+)>)/ig, '').split('You Might...')[0]
+            
+                return (
+                <option  className= 'tooltip' title={description} value={charAncestry.name}>{charAncestry.name} </option>
+             )})}
             </select>
+     
         </h1>
         </div>
     )
