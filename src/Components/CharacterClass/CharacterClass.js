@@ -1,5 +1,5 @@
 import './CharacterClass.css'
-export default function CharacterClass({characterClasses,chooseClass}){
+export default function CharacterClass({characterClasses,chooseClass,selectedClass}){
 
     return(
         <div>
@@ -9,7 +9,7 @@ export default function CharacterClass({characterClasses,chooseClass}){
              * When a user selects a class we send a 'chooseClass' dispatch to the Store by filtering the Class OBJ Array to match the value of the selected class.
              * We use [0] since it should be the first result returned from the filter.
              */}
-            <select className="character-select-box" defaultValue='Select Class' title= 'Hover over a Class for brief description.' onChange={ e => chooseClass(characterClasses.filter( (charClass) => {return charClass.name === e.target.value})[0])}>
+            <select className="character-select-box" defaultValue={selectedClass ? selectedClass: 'Select Class' } title= 'Hover over a Class for brief description.' onChange={ e => chooseClass(characterClasses.filter( (charClass) => {return charClass.name === e.target.value})[0])}>
             <option value="Select Class" disabled >Select Class</option>
             {/**
              * We map through each of the classes returned by the API that are stored in our characterClasses which has been passed down as a prop.

@@ -1,15 +1,10 @@
 import { Component } from "react"
 import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
-import CharacterClass from "../CharacterClass/CharacterClass"
-import CharacterName from "../CharacterName/CharacterName"
-import CharacterLevel from "../CharacterLevel/CharacterLevel"
-import CharacterStat from "../CharacterStat/CharacterStat"
 import './main.css'
-import CharacterAncestry from "../CharacterAncestry/CharacterAncestry"
-import CharacterDetails from "../CharacterDetails/characterDetails"
-import CharacterDiety from "../CharacterDiety/CharacterDiety"
-
+import { Link, Navigate, Route,Routes,Switch } from "react-router-dom"
+import CharacterOverview from "../CharacterOverview/CharacterOverview"
+import Feats from "../Feats/Feats"
 /**
  * 
  * @param {*} state - Current state for REDUX store
@@ -50,6 +45,9 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
+        
+
+
 class Main extends Component{
     constructor(props){
         super(props);
@@ -68,64 +66,25 @@ class Main extends Component{
     render(){
      
     return(
-        
-        <>
-        <div className="main-body">
-            <div className="generic-info">
-                <h1 className="title-text">Character Identity</h1>
-                <div className="character-NameClass">
-                    {console.log(this.props.characterDieties)}
-                    <CharacterName/>
-                    <CharacterClass characterClasses={this.props.characterClasses.classes.results} chooseClass={this.props.selectClass}/>
-                    <CharacterAncestry ancestries={this.props.characterAncestries.ancestries.results} selectAncestry={this.props.selectAncestry}/>
-                    <CharacterDiety characterDieties={this.props.characterDieties} selectDiety={this.props.selectDiety}/>
-                    <CharacterLevel charLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}/>
-                </div>
-                <h1 className="title-text">Character Ability Scores</h1>
-                <div className="character-stats-area">
-                    {Object.keys(this.props.characterStats).map( (stat) => {
-                    
-                    return(
-                        <CharacterStat className='character-stats-box' key={stat} stat={stat} statValue={(this.props.characterStats[stat]).value} adjustStat={this.props.adjustStat} statBonus={(this.props.characterStats[stat]).bonus}/>
-                    ) })}
-                    </div>
-                    </div>
-            {this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry &&
-                <div className="title-details-box">        
-                    <h1 className="title-text">Character Details</h1>   
-                    <h1 className="title-text">Saving Throws</h1>    
-                </div>
-            }
-            <div className="character-details-section">                
-                {/** Conditional Rendering here as HP is Unknown if no class is picked */}     
-                {(this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry) &&
-                    <CharacterDetails hp={((this.props.characterClasses.selectedClass.system.hp + this.props.characterStats.constitution.bonus)
-                                        * this.props.characterLevel.characterLevel) + this.props.characterAncestries.selectedAncestry.system.hp}
-                                      ancestry={this.props.characterAncestries.selectedAncestry}  />
-                }
-          
-        {/** Conditional Rendering here as Saving throws are not needed if no class is picked */}    
-        {this.props.characterClasses.selectedClass && this.props.characterAncestries.selectedAncestry &&
-        <>
-            <div className="character-savingThrows">
-                    <div className='character-savingThrow-ind'>
-                        <h2> <i className="fa-solid fa-gauge-high"></i> Reflex</h2>
-                        <p>{this.props.characterClasses.selectedClass.system.savingThrows.reflex + this.props.characterLevel.characterLevel + this.props.characterStats.dexterity.bonus}</p>
-                    </div>
-                    <div className='character-savingThrow-ind'>
-                        <h2> <i className="fa-solid fa-hand-fist"></i> Fortitude</h2>
-                        <p>{this.props.characterClasses.selectedClass.system.savingThrows.fortitude + this.props.characterLevel.characterLevel + this.props.characterStats.constitution.bonus}</p>
-                    </div>
-                    <div className='character-savingThrow-ind'>
-                        <h2> <i className="fa-solid fa-brain"></i> Will</h2>
-                        <p>{this.props.characterClasses.selectedClass.system.savingThrows.will + this.props.characterLevel.characterLevel + this.props.characterStats.wisdom.bonus}</p>
-                    </div>
-            </div>
-            </>}
-        </div>
-        </div>
+        <div>
+        <header> Fancy header going to go here eventually but for now click to go to feats{<Link to='/feats'> F E A T S</Link>} or click to go back {<Link to='/overview'>  O V E R V I E W</Link>}  so we can test data storage</header>
+        <Routes>
+            {/** Routing option here forces users to the overview Route on load. */}
+          <Route exact path='' element={<Navigate to='/overview'/>}/>
+           {/** Routing option here will wait to render until class results from fetch are obtained, since it will be undefined otherwise.
+            * Might set up a loading screen to send instead of an empty frag.
+           */}  
+          <Route exact path= '/overview' element={
+            this.props.characterClasses.classes.results ? 
+            <CharacterOverview  characterClasses = {this.props.characterClasses} selectClass={this.props.selectClass}
+                                characterAncestries = {this.props.characterAncestries} selectAncestry={this.props.selectAncestry}
+                                characterDieties={this.props.characterDieties} selectDiety={this.props.selectDiety}
+                                characterLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}
+                                characterStats={this.props.characterStats} adjustStat={this.props.adjustStat}/> : <></>}/>
 
-        </>
+            <Route exact path='/feats' element={<Feats/>} />                    
+        </Routes> 
+        </div>
     )}
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
