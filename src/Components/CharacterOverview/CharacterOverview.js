@@ -51,14 +51,15 @@ export default function CharacterOverview (
             {characterClasses.selectedClass && characterAncestries.selectedAncestry &&
                 <div className="title-details-box">        
                     <h1 className="title-text">Character Details</h1>   
-                    <h1 className="title-text">Saving Throws</h1>    
+                    <h1 className="title-text">Saving Throws</h1> 
                 </div>
             }
+    
             <div className="character-details-section">                
                 {/** Conditional Rendering here as HP is Unknown if no class is picked */}     
                 {(characterClasses.selectedClass && characterAncestries.selectedAncestry) &&
                     <CharacterDetails hp={((characterClasses.selectedClass.system.hp + characterStats.constitution.bonus)
-                                        * characterLevel.characterLevel) + characterAncestries.selectedAncestry.system.hp}
+                                        * characterLevel) + characterAncestries.selectedAncestry.system.hp}
                                       ancestry={characterAncestries.selectedAncestry}  />
                 }
           
