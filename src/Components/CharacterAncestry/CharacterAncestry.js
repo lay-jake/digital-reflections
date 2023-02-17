@@ -1,7 +1,7 @@
 import './CharacterAncestry.css'
 
 export default function CharacterAncestry({ancestries,selectAncestry}){
-    console.log(ancestries)
+
     return(
         <div>
         <h2>Character Ancestry</h2>
@@ -11,8 +11,8 @@ export default function CharacterAncestry({ancestries,selectAncestry}){
              * We use [0] since it should be the first result returned from the filter.
              */}
   
-            <select  className="ancestry-select-box" title= 'Hover over an Ancestry for brief description.' defaultValue='' onChange={ e => selectAncestry(ancestries.filter( (charAncestry) => {return charAncestry.name === e.target.value})[0])}>
-            <option class="none"  value="" disabled selected>Select Ancestry</option>
+            <select  className="ancestry-select-box" title= 'Hover over an Ancestry for brief description.' defaultValue='Select Ancestry' onChange={ e => selectAncestry(ancestries.filter( (charAncestry) => {return charAncestry.name === e.target.value})[0])}>
+            <option value="Select Ancestry" disabled>Select Ancestry</option>
             {/**
              * We map through each of the ancestries returned by the API that are stored in our ancestries which has been passed down as a prop.
              * Each ancestry is entered as a option using it's name key.

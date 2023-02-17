@@ -38,6 +38,38 @@ export const fetchClasses = (dispatch) =>{
  *  Actions for Class loads
  * 
  *  */
+export const dietiesLoading = () =>({
+    type: ActionTypes.LOADING_DIETIES
+   }
+)
+
+export const addDieties = (dieties) =>({
+        type: ActionTypes.ADD_DIETIES,
+        payload:dieties
+       }
+    )
+export const selectDiety = (selectedDiety) =>({
+        type: ActionTypes.SELECT_DIETY,
+        payload:selectedDiety
+       }
+    )
+
+export const fetchDieties = (dispatch) =>{
+    return dispatch => {
+        dispatch(dietiesLoading());
+    
+    instance.get('deity')
+    .then( res => {dispatch(addDieties(res.data))})
+    //TO DO - More indepth error handling.
+    .catch( error => console.log(error.message))
+}}
+
+
+/**
+ * 
+ *  Actions for Diety loads
+ * 
+ *  */
 export const ancestriesLoading = () =>({
     type: ActionTypes.LOADING_ANCESTRIES
    }

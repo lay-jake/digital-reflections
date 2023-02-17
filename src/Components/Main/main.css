@@ -3,6 +3,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 1;
     }
 
 .character-stats-area{
@@ -18,10 +19,10 @@
    display: flex;
    justify-content: space-evenly;
    flex-wrap: wrap;
-   flex-grow: 1;
 }
 
 .character-stats-box{
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

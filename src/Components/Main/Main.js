@@ -1,5 +1,5 @@
 import { Component } from "react"
-import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry } from "../../Redux/actionCreator"
+import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import CharacterClass from "../CharacterClass/CharacterClass"
 import CharacterName from "../CharacterName/CharacterName"
@@ -7,7 +7,8 @@ import CharacterLevel from "../CharacterLevel/CharacterLevel"
 import CharacterStat from "../CharacterStat/CharacterStat"
 import './main.css'
 import CharacterAncestry from "../CharacterAncestry/CharacterAncestry"
-import CharacterDetails from "../CharacterDetails.js/characterDetails"
+import CharacterDetails from "../CharacterDetails/characterDetails"
+import CharacterDiety from "../CharacterDiety/CharacterDiety"
 
 /**
  * 
@@ -21,6 +22,7 @@ const mapStateToProps = state => {
         characterLevel: state.characterLevel,
         characterStats: state.characterStats,
         characterAncestries: state.characterAncestries,
+        characterDieties: state.characterDieties,
     }
 }
 
@@ -41,6 +43,10 @@ const mapDispatchToProps = (dispatch) => ({
      fetchAncestries: () => {dispatch(fetchAncestries())},
      selectAncestry: (selectedAncestry) => {dispatch(selectAncestry(selectedAncestry))},
 
+    //connecting Redux dieties actions to props
+    fetchDieties: () => {dispatch(fetchDieties())},
+    selectDiety: (selectedDiety) => {dispatch(selectDiety(selectedDiety))},
+
 })
 
 
@@ -56,6 +62,7 @@ class Main extends Component{
     componentDidMount = () =>{
         this.props.fetchClasses();
         this.props.fetchAncestries();
+        this.props.fetchDieties();
     }
     
     render(){
@@ -67,10 +74,11 @@ class Main extends Component{
             <div className="generic-info">
                 <h1 className="title-text">Character Identity</h1>
                 <div className="character-NameClass">
-                    {console.log(this.props.characterAncestries)}
+                    {console.log(this.props.characterDieties)}
                     <CharacterName/>
                     <CharacterClass characterClasses={this.props.characterClasses.classes.results} chooseClass={this.props.selectClass}/>
                     <CharacterAncestry ancestries={this.props.characterAncestries.ancestries.results} selectAncestry={this.props.selectAncestry}/>
+                    <CharacterDiety characterDieties={this.props.characterDieties} selectDiety={this.props.selectDiety}/>
                     <CharacterLevel charLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}/>
                 </div>
                 <h1 className="title-text">Character Ability Scores</h1>

@@ -1,0 +1,38 @@
+.character-diet-totalsearchResults{
+    background-color: #ffffff;
+    position: absolute;
+    top:-10;
+    right:;
+    width:10rem;
+}
+.character-diety-searchbar{
+    width: 10rem;
+    border: 1px solid black ;
+    background-color: #ffffff;
+}
+
+
+.character-diety-select-area > i{
+    margin-right: 20px;
+    font-size: x-large;
+
+}
+@media( max-width: 770px){
+    .character-diet-totalsearchResults{
+        top: 10;
+        left:100;
+        position: absolute;
+        width:10rem;
+    }
+}
+
+@media( max-width: 1200px){
+    .character-diet-totalsearchResults{
+        position: absolute;
+        left: 38.25rem;
+        width:10rem;
+    }
+
+}
+
+
