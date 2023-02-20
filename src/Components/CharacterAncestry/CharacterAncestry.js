@@ -17,7 +17,7 @@ export default function CharacterAncestry({ancestries,selectAncestry,selectedAnc
     <Container>
         <Row>
             <Col>
-                <h2 className='text-center'>Ancestry</h2>
+                <h2 className='text-center subtitle-text'>Ancestry</h2>
             </Col>
         </Row>
      

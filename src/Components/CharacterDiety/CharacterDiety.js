@@ -107,7 +107,7 @@ export default function CharacterDiety({characterDieties,selectDiety,selectedDie
           <>
           <Container>
             <Row>
-               <h2 className="text-center"> Diety </h2>
+               <h2 className="text-center subtitle-text"> Diety </h2>
             </Row>
             <Row>
               <Col xs={2}>

@@ -33,18 +33,19 @@ export default function CharacterLevel({charLevel,adjustLevel}){
                 <Row md={12}>
                   <h1 className="text-center"> Level</h1>
                 </Row>
-                <Row >
-                
-                        <Col xs={{span:2,offset:3}} sm={{span:2,offset:0}} lg={{span:2,offset:1}}>
+                <Row>
+                    <div className="level-adjust-box">
+                {/* xs={{span:2,offset:3}} sm={{span:2,offset:0}} lg={{span:2,offset:1}}  xs={{span:2,offset:0}} sm={{span:2,offset:2}}xs={{span:2}} sm={{span:2,offset:1}*/}
+                        <Col className="text-center" >
                             <button className="level-adjust-button" onClick={() => handleChange('-')}>-</button>
                         </Col>
-                        <Col xs={{span:2,offset:0}} sm={{span:2,offset:2}}>
-                            <h2 className="text-center">{charLevel}</h2>
+                        <Col className="text-center">
+                            <h2>{charLevel}</h2>
                         </Col>
-                        <Col xs={{span:2}} sm={{span:2,offset:1}}>
+                        <Col className="text-center">
                             <button className="level-adjust-button" onClick={() => handleChange('+')}>+</button>
                         </Col>
-                    
+                    </div>
                 </Row>
             </div>
        </Container>

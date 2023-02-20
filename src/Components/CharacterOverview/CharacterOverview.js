@@ -42,9 +42,13 @@ export default function CharacterOverview (
                         <Col sm={12} md={3}>
                             <CharacterDiety characterDieties={characterDieties} selectDiety={selectDiety} selectedDiety={characterDieties.selectedDiety}/>
                         </Col>
-                        <Col sm={12} md={2}>
-                            <CharacterLevel charLevel={characterLevel} adjustLevel={adjustLevel}/>
-                        </Col>
+                    </Row>
+                    <Row>
+                        <div className="character-level-box">
+                            <Col>
+                                <CharacterLevel charLevel={characterLevel} adjustLevel={adjustLevel}/>
+                            </Col>
+                        </div>
                     </Row>
               </Container>
 
@@ -58,8 +62,7 @@ export default function CharacterOverview (
                     <Row>
                     <h1 className="title-text">Character Ability Scores</h1>
                     </Row>
-                    <Row>
-                        <div className="character-stats-area">
+                    <Row className="stats-box" sm={1} md={3} lg={4}>
                                 {Object.keys(characterStats).map( (stat) => {
                               
                                 return(
@@ -68,7 +71,6 @@ export default function CharacterOverview (
                                         adjustStat={adjustStat} statBonus={(characterStats[stat]).bonus}/>
                                 
                                 ) })}
-                            </div>       
                     </Row>
                 </Container>
 

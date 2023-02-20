@@ -16,7 +16,7 @@ export default function CharacterClass({characterClasses,chooseClass,selectedCla
         <Container fluid>
             <Row>
                 <Col>
-                    <h2 className='text-center'> Class</h2>
+                    <h2 className='text-center subtitle-text'> Class</h2>
                 </Col>
             </Row>
             <Row>

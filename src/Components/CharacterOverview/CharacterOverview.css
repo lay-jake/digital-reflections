@@ -1,6 +1,11 @@
-.character-stats-area{
-    gap:20px;
-}    
+.stats-box{
+    gap:5px;
+    padding-bottom: 20px;
+}
+
+.character-level-box{
+    padding-top: 10px;
+}
 
 .main-body{
     border: 1px solid black;
@@ -9,11 +14,13 @@
     font-size: 14px;
     font-weight: bold;
     background-color: #afc2cb;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .title-text{
     text-align:center;
-    padding: 5px;
+    padding: 10px;
     text-decoration: underline;
 }
 
@@ -24,7 +31,6 @@
     justify-items: center;
     align-self: center;
     column-gap: 15px;
-
     margin-left: 5%;
     margin-right: 5%;
 
