@@ -22,18 +22,16 @@
     text-align:center;
     padding: 10px;
     text-decoration: underline;
+    padding-bottom: 25px;
 }
 
 .character-savingThrows{
-    display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: center;
-    justify-items: center;
-    align-self: center;
-    column-gap: 15px;
-    margin-left: 5%;
-    margin-right: 5%;
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap:20px;
+    padding-bottom: 20px;
     /**
     Setting up animation for the details section.
     rolls out in 1, but delayed by 1 to allow the details section ahead of it to load first.
@@ -48,14 +46,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-items: center;
     border: 1px solid black;
     box-shadow: 1px 1px 1.5px black;
-    padding: 10px;
-    padding-top: 0px;
+    gap:20px;
+    justify-content: center;
     background-color: #E1F5FE;
-    justify-self: center;
-    align-self: center;
-
 }
 
 @keyframes rollout{

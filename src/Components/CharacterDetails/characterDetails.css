@@ -4,8 +4,9 @@
     justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
-    row-gap: 15px;
+    gap:15px;
     animation: rollout 1s ease-in forwards;
+    padding-bottom: 20px;
 }
 
 .character-defensive-ind-box{
@@ -16,10 +17,9 @@
     align-items: center;
     border: 1px solid black;
     box-shadow: 1px 1px 1.5px black;
-    padding: 10px;
-    padding-top: 0px;
+    justify-content: center;
     background-color: #E1F5FE;
-
+    gap:20px;
 }
 
 .character-details-speed-ft{

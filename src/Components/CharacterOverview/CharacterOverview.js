@@ -50,10 +50,7 @@ export default function CharacterOverview (
                             </Col>
                         </div>
                     </Row>
-              </Container>
-
-
-                 
+              </Container>                
                 {/**  Second section on overview contains some hard stats and saves
                  *    Will not always load so we have conditional renders inside to trigger when class AND ancestry are selected since we need both to compute
                  *    the stats.
@@ -72,45 +69,41 @@ export default function CharacterOverview (
                                 
                                 ) })}
                     </Row>
-                </Container>
+                </Container>                      
+            </div>
 
-            </div>
-            {characterClasses.selectedClass && characterAncestries.selectedAncestry &&
-                <div className="title-details-box">        
-                    <h1 className="title-text">Character Details</h1>   
-                    <h1 className="title-text">Saving Throws</h1> 
-                </div>
-            }
-          
-            <div className="character-details-section">                
-                {/** Conditional Rendering here as HP is Unknown if no class is picked */}     
-                {(characterClasses.selectedClass && characterAncestries.selectedAncestry) &&
+        {/** Conditional Rendering here as HP is Unknown if no class is picked */}                                 
+        {characterClasses.selectedClass && characterAncestries.selectedAncestry && 
+        <Container>
+            <Row xs={1} md={6}>
+                <Col md={{span:5,offset:0}}>
+                <h1 className="title-text">Character Details</h1>                
+                    {/** Conditional Rendering here as HP is Unknown if no class is picked */}     
+                   
                     <CharacterDetails hp={((characterClasses.selectedClass.system.hp + characterStats.constitution.bonus)
-                                        * characterLevel) + characterAncestries.selectedAncestry.system.hp}
-                                      ancestry={characterAncestries.selectedAncestry}  />
-                }
-          
-        {/** Conditional Rendering here as Saving throws are not needed if no class is picked */}    
-        {characterClasses.selectedClass && characterAncestries.selectedAncestry &&
-        <>
-            <div className="character-savingThrows">
-                    <div className='character-savingThrow-ind'>
-                        <h2> <i className="fa-solid fa-gauge-high"></i> Reflex</h2>
-                        <p>{characterClasses.selectedClass.system.savingThrows.reflex + characterLevel + characterStats.dexterity.bonus}</p>
+                                         * characterLevel) + characterAncestries.selectedAncestry.system.hp}
+                                        ancestry={characterAncestries.selectedAncestry}  />
+                </Col> 
+                <Col md={{span:5,offset:1}}>
+                  <h1 className="title-text">Saving Throws</h1> 
+                    <div className="character-savingThrows">    
+                        <div className='character-savingThrow-ind'>
+                            <h2> <i className="fa-solid fa-gauge-high"></i> Reflex</h2>
+                            <p>{characterClasses.selectedClass.system.savingThrows.reflex + characterLevel + characterStats.dexterity.bonus}</p>
+                        </div>
+                        <div className='character-savingThrow-ind'>
+                            <h2> <i className="fa-solid fa-hand-fist"></i> Fort</h2>
+                            <p>{characterClasses.selectedClass.system.savingThrows.fortitude + characterLevel + characterStats.constitution.bonus}</p>
+                        </div>
+                        <div className='character-savingThrow-ind'>
+                            <h2> <i className="fa-solid fa-brain"></i> Will</h2>
+                            <p>{characterClasses.selectedClass.system.savingThrows.will + characterLevel + characterStats.wisdom.bonus}</p>
+                        </div>
                     </div>
-                    <div className='character-savingThrow-ind'>
-                        <h2> <i className="fa-solid fa-hand-fist"></i> Fortitude</h2>
-                        <p>{characterClasses.selectedClass.system.savingThrows.fortitude + characterLevel + characterStats.constitution.bonus}</p>
-                    </div>
-                    <div className='character-savingThrow-ind'>
-                        <h2> <i className="fa-solid fa-brain"></i> Will</h2>
-                        <p>{characterClasses.selectedClass.system.savingThrows.will + characterLevel + characterStats.wisdom.bonus}</p>
-                    </div>
-            </div>
-            </>}
+                </Col>
+            </Row>    
+        </Container>}
         </div>
-        </div>
-   
         </>
     )
 }

@@ -46,7 +46,7 @@ export default function CharacterAncestry({ancestries,selectAncestry,selectedAnc
                 */}    
                 {ancestries && ancestries.map( (charAncestry) =>{
                     return (
-                    <option  key={charAncestry.name} className= 'tooltip' value={charAncestry.name}>  {charAncestry.name} </option>
+                    <option  key={charAncestry.name} className= 'ancestry-select-box' value={charAncestry.name}>  {charAncestry.name} </option>
                 )})}
                 </select>
             </Col>

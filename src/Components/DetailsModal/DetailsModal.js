@@ -3,7 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import React from "react";
 import parse from 'html-react-parser';
 import './DetailsModal.css'
-import { Container,Row,Col, Stack } from 'react-bootstrap';
+import { Container,Row,Stack } from 'react-bootstrap';
 
 
 export default function DetailsModal({object,returnSet}){
@@ -48,7 +48,7 @@ export default function DetailsModal({object,returnSet}){
                 fullscreen={true}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>Modal title</Modal.Title>
+                  <Modal.Title>{object[0].type === 'ancestry'? 'Select Ancestry':'Select Class'}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <Stack className='obj-container' direction='horizontal'>
