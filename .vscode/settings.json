@@ -1,3 +1,7 @@
 {
-    "deepscan.enable": true
+    "deepscan.enable": true,
+    "files.associations": {
+        "iostream": "cpp",
+        "ostream": "cpp"
+    }
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import './CharacterLevel.css'
 export default function CharacterLevel({charLevel,adjustLevel}){
 
@@ -26,13 +27,27 @@ export default function CharacterLevel({charLevel,adjustLevel}){
         }
     }
     return(
-        <div className="character-level-area">
-        <h1>Character Level</h1>
-        <div className="level-adjust-area">
-        <button className="level-adjust-button" onClick={() => handleChange('-')}>-</button>
-        <h2>{charLevel}</h2>
-        <button className="level-adjust-button" onClick={() => handleChange('+')}>+</button>
-        </div>
-        </div>
+        <>
+        <Container fluid>
+            <div className="character-level-area">
+                <Row md={12}>
+                  <h1 className="text-center"> Level</h1>
+                </Row>
+                <Row >
+                
+                        <Col xs={{span:2,offset:3}} sm={{span:2,offset:0}} lg={{span:2,offset:1}}>
+                            <button className="level-adjust-button" onClick={() => handleChange('-')}>-</button>
+                        </Col>
+                        <Col xs={{span:2,offset:0}} sm={{span:2,offset:2}}>
+                            <h2 className="text-center">{charLevel}</h2>
+                        </Col>
+                        <Col xs={{span:2}} sm={{span:2,offset:1}}>
+                            <button className="level-adjust-button" onClick={() => handleChange('+')}>+</button>
+                        </Col>
+                    
+                </Row>
+            </div>
+       </Container>
+        </>
     )
 }

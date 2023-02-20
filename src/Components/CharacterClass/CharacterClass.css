@@ -1,12 +1,7 @@
-.class-select-area{
-    display: flex;
-    gap: 15px;
-}
-
-.class-select{
-    text-align: center;
-}
 .character-select-box{
     border: 1px solid black ;
     background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    font-size: xx-large
 }

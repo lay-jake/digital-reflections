@@ -1,12 +1,14 @@
-import Modal from "react-modal";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import React from "react";
 import parse from 'html-react-parser';
 import './DetailsModal.css'
+import { Container,Row,Col, Stack } from 'react-bootstrap';
 
 
 export default function DetailsModal({object,returnSet}){
 
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [isModalOpen, setIsOpen] = React.useState(false);
     const [displayedObj,setDisplayedObj] = React.useState('');
     const parse = require('html-react-parser');
 
@@ -30,32 +32,83 @@ export default function DetailsModal({object,returnSet}){
      }
 
     return(
-    <div>
-            <button className='details-button-overview' onClick={openModal}>Use Detailed Selector</button>
-            <Modal
-                isOpen={modalIsOpen}
-                onRequestClose={closeModal}
-                contentLabel="Selection"
-                ariaHideApp={false}
-            >     
-                <div>
-                    <button className='modal-exit-buttons exit' onClick={closeModal}> Close </button>
-                    <button className='modal-exit-buttons select' onClick={()=> handleSubmit()}>Select</button>
-                </div>
-                <div className="modal-container">
-        
-                    <div className="obj-list" style={{overflowY: 'scroll', height:'auto', width:'7%'}}>
-                    {object.map( (obj) => {
-                            return <p className={displayedObj.name === obj.name ? 'class-select-active' : 'class-select-inactive'} key={obj.name} onClick={() => showDetails(obj)}>{obj.name} </p>
-                        })}
-                    </div>
-                    {displayedObj !== '' &&
-                            <div className="obj-description">
-                            {parse(displayedObj.system.description.value)}
-                            </div>
-                    } 
-                </div>
 
-            </Modal>
-    </div>
-    )}
+      <>
+      <Container>
+        <Row>
+          <Button className='details-button-overview' onClick={openModal}>
+            Use Detailed Selector
+          </Button>
+
+              <Modal
+                show={isModalOpen}
+                onHide={closeModal}
+                backdrop="static"
+                keyboard={false}
+                fullscreen={true}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Modal title</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  <Stack className='obj-container' direction='horizontal'>
+                        <Stack direction='vertical'>
+                            <div className="obj-list" style={{overflowY: 'scroll', height:'80%'}}>
+                            {object.map( (obj) => {
+                                        return <p className={displayedObj.name === obj.name ?
+                                        'class-select-active' : 'class-select-inactive'} key={obj.name} onClick={() => showDetails(obj)}>{obj.name} </p>
+                                    })}
+                            </div>
+                        </Stack>
+                      
+                        {displayedObj !== '' &&
+                                    <div className="obj-description">
+                                    {parse(displayedObj.system.description.value)}</div>}
+                      
+                </Stack>
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant="secondary" onClick={closeModal}>
+                    Close
+                  </Button>
+                  <Button variant="primary" onClick={()=> handleSubmit()}>
+                    Select
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+        </Row>
+      </Container>        
+    </>
+  );
+}
+
+
+    // <div>
+    //         <button className='details-button-overview' onClick={openModal}>Use Detailed Selector</button>
+    //         <Modal
+    //             isOpen={modalIsOpen}
+    //             onRequestClose={closeModal}
+    //             contentLabel="Selection"
+    //             ariaHideApp={false}
+    //         >     
+    //             <div>
+    //                 <button className='modal-exit-buttons exit' onClick={closeModal}> Close </button>
+    //                 <button className='modal-exit-buttons select' onClick={()=> handleSubmit()}>Select</button>
+    //             </div>
+    //             <div className="modal-container">
+        
+    //                 <div className="obj-list" style={{overflowY: 'scroll', height:'auto', width:'7%'}}>
+    //                 {object.map( (obj) => {
+    //                         return <p className={displayedObj.name === obj.name ? 'class-select-active' : 'class-select-inactive'} key={obj.name} onClick={() => showDetails(obj)}>{obj.name} </p>
+    //                     })}
+    //                 </div>
+    //                 {displayedObj !== '' &&
+    //                         <div className="obj-description">
+    //                         {parse(displayedObj.system.description.value)}
+    //                         </div>
+    //                 } 
+    //             </div>
+
+    //         </Modal>
+    // </div>
+  

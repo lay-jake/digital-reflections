@@ -1,13 +1,7 @@
-.ancestry-select-area{
-    display: flex;
-    gap: 15px;
-    text-align: center;
-}
-.ancestry-select{
-    text-align: center;
-}
-
 .ancestry-select-box{
     border: 1px solid black ;
     background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    font-size: xx-large
 }
