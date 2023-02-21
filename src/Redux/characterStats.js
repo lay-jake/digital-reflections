@@ -67,7 +67,7 @@ export const CharacterStats = (state = {
                 default: return state                 
             }
 
-                    /**
+        /**
          * Action Type - GET STAT 
          * PAYLOAD - [STAT] - STAT: Which of the stats to be returned
          * RETURNS - Value of the stat in redux store.

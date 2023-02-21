@@ -4,6 +4,7 @@ import { CharacterClasses } from './characterClasses';
 import { CharacterDieties } from './characterDieties';
 import { CharacterLevel } from './characterLevel';
 import { CharacterStats } from './characterStats';
+import { FeatsLibrary } from './featsLibrary';
 export const store = configureStore({
        reducer:{
         characterClasses: CharacterClasses,
@@ -11,4 +12,5 @@ export const store = configureStore({
         characterStats: CharacterStats,
         characterAncestries: CharacterAncestries,
         characterDieties: CharacterDieties,
+        featsLibrary:FeatsLibrary
        }});

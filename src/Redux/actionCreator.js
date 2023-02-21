@@ -97,6 +97,33 @@ export const fetchAncestries = (dispatch) =>{
 }}
 
 
+/**
+ * 
+ *  Actions for Diety loads
+ * 
+ *  */
+export const featsLoading = () =>({
+    type: ActionTypes.LOADING_FEATS
+   }
+)
+
+export const addFeats = (feats) =>({
+        type: ActionTypes.ADD_FEATS,
+        payload:feats
+       }
+    )
+
+export const fetchFeats = (dispatch) =>{
+    return dispatch => {
+        dispatch(featsLoading());
+    
+    instance.get('feat')
+    .then( res => {dispatch(addFeats(res.data))})
+    //TO DO - More indepth error handling.
+    .catch( error => console.log(error.message))
+}}
+
+
 /** 
  * 
  * Actions for Character Level handling 

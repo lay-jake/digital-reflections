@@ -16,6 +16,12 @@ export const ADD_DIETIES = 'ADD_DIETIES'
 export const LOADING_DIETIES = 'LOADING_DIETIES'
 export const SELECT_DIETY = 'SELECT_DIETY'
 
+//* Setting up Action types for FEATS calls*/
+export const FETCH_FEATS = 'FETCH_FEATS'
+export const ADD_FEATS = 'ADD_FEATS'
+export const LOADING_FEATS = 'LOADING_FEATS'
+export const SELECT_FEAT = 'SELECT_FEAT'
+
 
 
 //* Setting up Action types for Character level store info*/

@@ -3,5 +3,22 @@
     padding: 10px;
     box-shadow: 1px 1px 1.5px black;
     background-color: #E1F5FE;
-    
+    animation: rollout 1s ease-in forwards;
+}
+@keyframes rollout{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: .25;
+    }
+    50%{
+        opacity: .5;
+    }
+    75%{
+        opacity: .75;
+    }
+    100%{
+        opacity: 1;
+    }
 }

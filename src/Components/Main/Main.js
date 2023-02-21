@@ -1,9 +1,10 @@
 import { Component } from "react"
-import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety } from "../../Redux/actionCreator"
+import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety, fetchFeats } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
 import { Link, Navigate, Route,Routes} from "react-router-dom"
 import CharacterOverview from "../CharacterOverview/CharacterOverview"
+import FeatsLibrary from "../FeatsLibrary/FeatsLibrary"
 
 /**
  * 
@@ -18,6 +19,7 @@ const mapStateToProps = state => {
         characterStats: state.characterStats,
         characterAncestries: state.characterAncestries,
         characterDieties: state.characterDieties,
+        featsLibrary: state.featsLibrary
     }
 }
 
@@ -41,6 +43,9 @@ const mapDispatchToProps = (dispatch) => ({
     //connecting Redux dieties actions to props
     fetchDieties: () => {dispatch(fetchDieties())},
     selectDiety: (selectedDiety) => {dispatch(selectDiety(selectedDiety))},
+
+    //connecting Redux FEAT actions to props
+    fetchFeats: () => {dispatch(fetchFeats())},
 
 })
 
@@ -83,7 +88,7 @@ class Main extends Component{
                                 characterStats={this.props.characterStats} adjustStat={this.props.adjustStat}/> : <></>}/>
                                 
 
-            <Route exact path='/feats' element={<div/>} />                    
+            <Route exact path='/feats' element={<FeatsLibrary feats={this.props.featsLibrary.feats} fetchFeats={this.props.fetchFeats}/>} />                    
         </Routes> 
         </div>
     )}

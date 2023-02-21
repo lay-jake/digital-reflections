@@ -1,7 +1,10 @@
+
+//says import is not used but it is and will brick if removed.
 import parse from 'html-react-parser';
+
 import Button from 'react-bootstrap/Button';
 import React, { useState } from "react"
-import { Container, Row,Col, Modal,Stack } from "react-bootstrap"
+import { Container, Row,Col, Modal} from "react-bootstrap"
 import instance from "../../Shared/api"
 import './CharFeatures.css'
 
@@ -33,7 +36,7 @@ export default function CharFeatures({selectedClass, characterLevel}){
         .catch(error => console.log(error))
        setIsOpen(true)
     }
-    console.log(selectedFeature)
+
     return(
         <>
         {selectedClass && characterLevel &&
@@ -55,6 +58,7 @@ export default function CharFeatures({selectedClass, characterLevel}){
                                 <h2 className={'character-features-ind text-center'} title='Click for details' onClick={ () => handleClick (feature[1].name)}> {feature[1].name}</h2>
                             </div>
                         )}
+                        return null;
                     })
                 }
                 </Col>
