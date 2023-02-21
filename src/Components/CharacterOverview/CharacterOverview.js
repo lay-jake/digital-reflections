@@ -7,6 +7,7 @@ import CharacterAncestry from "../CharacterAncestry/CharacterAncestry"
 import CharacterDetails from "../CharacterDetails/characterDetails"
 import CharacterDiety from "../CharacterDiety/CharacterDiety"
 import { Container,Row, Col } from "react-bootstrap"
+import CharFeatures from "../CharFeatures/CharFeatures"
 
 
 export default function CharacterOverview (
@@ -103,6 +104,9 @@ export default function CharacterOverview (
                 </Col>
             </Row>    
         </Container>}
+        <Container>
+            <CharFeatures selectedClass={characterClasses.selectedClass} characterLevel={characterLevel} />
+        </Container>
         </div>
         </>
     )

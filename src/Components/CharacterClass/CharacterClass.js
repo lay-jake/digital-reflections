@@ -5,7 +5,7 @@ import { Container,Col,Row } from 'react-bootstrap';
 
 export default function CharacterClass({characterClasses,chooseClass,selectedClass}){
     const[defaultShown,setDefaultShown] = React.useState(selectedClass ? {text:selectedClass.name}:{text:'Select Class'})
-
+    console.log(selectedClass)
     function returnSet(obj){
         setDefaultShown({...defaultShown,text:obj.name})
         chooseClass(obj);

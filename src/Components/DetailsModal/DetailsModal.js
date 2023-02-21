@@ -34,6 +34,7 @@ export default function DetailsModal({object,returnSet}){
     return(
 
       <>
+      {object &&
       <Container>
         <Row>
           <Button className='details-button-overview' onClick={openModal}>
@@ -77,38 +78,7 @@ export default function DetailsModal({object,returnSet}){
                 </Modal.Footer>
               </Modal>
         </Row>
-      </Container>        
+      </Container>}       
     </>
   );
 }
-
-
-    // <div>
-    //         <button className='details-button-overview' onClick={openModal}>Use Detailed Selector</button>
-    //         <Modal
-    //             isOpen={modalIsOpen}
-    //             onRequestClose={closeModal}
-    //             contentLabel="Selection"
-    //             ariaHideApp={false}
-    //         >     
-    //             <div>
-    //                 <button className='modal-exit-buttons exit' onClick={closeModal}> Close </button>
-    //                 <button className='modal-exit-buttons select' onClick={()=> handleSubmit()}>Select</button>
-    //             </div>
-    //             <div className="modal-container">
-        
-    //                 <div className="obj-list" style={{overflowY: 'scroll', height:'auto', width:'7%'}}>
-    //                 {object.map( (obj) => {
-    //                         return <p className={displayedObj.name === obj.name ? 'class-select-active' : 'class-select-inactive'} key={obj.name} onClick={() => showDetails(obj)}>{obj.name} </p>
-    //                     })}
-    //                 </div>
-    //                 {displayedObj !== '' &&
-    //                         <div className="obj-description">
-    //                         {parse(displayedObj.system.description.value)}
-    //                         </div>
-    //                 } 
-    //             </div>
-
-    //         </Modal>
-    // </div>
-  
