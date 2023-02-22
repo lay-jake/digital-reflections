@@ -91,7 +91,8 @@ class Main extends Component{
             <Route exact path='/feats' 
                          element={<FeatsLibrary 
                                 feats={this.props.featsLibrary.feats} fetchFeats={this.props.fetchFeats}
-                                selectedClass={this.props.characterClasses.selectedClass} selectedAncestry={this.props.characterAncestries.selectedAncestry} characterLevel={this.props.characterLevel.characterLevel} />} />                    
+                                selectedClass={this.props.characterClasses.selectedClass} selectedAncestry={this.props.characterAncestries.selectedAncestry} 
+                                characterLevel={this.props.characterLevel.characterLevel} characterStats={this.props.characterStats}/>} />                    
         </Routes> 
         </div>
     )}

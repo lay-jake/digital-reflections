@@ -1,7 +1,9 @@
 import React,{useState} from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Popup from 'reactjs-popup';
+import './FeatsLibrary.css'
 
-export default function FeatsFilter({featList,selectedClass,selectedAncestry,characterLevel}){
+export default function FeatsFilter({featList,selectedClass,selectedAncestry,characterLevel,setSelected,characterStats}){
 
 
 
@@ -28,15 +30,33 @@ const handleCheckbox = () =>{
     }
 }    
 
-
+console.log(characterStats)
 //handles the input field, updates as typed
 const handleChange = e => {
     setSearchField(e.target.value);
 }
 
+const handleClick = (feat) =>{
+    setSelected(feat)
+}
+
+const prereqStatSearch = (feat,stat) =>{
+    let preReqList = feat.system.prerequisites.value.map ( (prereq) => {
+        //checking for stat prereqs
+        let returnValue = false;
+         if (prereq.value.toLowerCase().includes(stat)){
+            let splitReq = prereq.value.split(" ");
+            returnValue = splitReq[(splitReq.length - 1)] >= characterStats[stat].value  
+         }
+          return returnValue
+        })
+        return preReqList.includes(true) ? true : false
+    }
+
 const search = () => {
+    
     //filteredList will parse the Feats array and try to match any name/type or feat/action and add it to the new array to be returned.
-    const filteredFeats = featList.filter(
+    let  filteredFeats = featList.filter(
         feat => {
             return (
             feat.name.toLowerCase()
@@ -50,19 +70,18 @@ const search = () => {
         );
         //additional search logic to be performed if asked.
         if(meetPrerequisites){
-            filteredFeats.filter( 
+            filteredFeats = filteredFeats.filter( 
             feat => {
+                let statReq = (Object.keys(characterStats).map(stat =>{return prereqStatSearch(feat,stat)}))
+                console.log(statReq.includes(true))
                 return(
-                {/** TO DO MORE FILTERING */}
-                (feat.system.level.value <= characterLevel) &&
-                (feat.sysyem.pr)  
-
-                )
-            })
-            return filteredFeats
+                feat.system.level.value <= characterLevel &&
+                statReq.includes(true)
+              );
+            }) 
+            }
+        return filteredFeats
         }
-     return filteredFeats
-    }
 
 //Displays either the search results, or the generic feat list showing all.    
 const displayResults = () => {
@@ -71,9 +90,10 @@ const displayResults = () => {
 
 return(
     <>
-    <div>
-    <div>
-       <label>
+    <Container>
+    <Row>
+        <Col xs={{span:12,offset:2}}sm={{span:12,offset:5}}>
+       <label className="extra-option-search">
             <input type='checkbox' title="Only show feats you have met the prerequisites for." checked={meetPrerequisites} value={meetPrerequisites} onChange={ () => handleCheckbox()}/>
             Meet Prerequisites
        </label>
@@ -81,17 +101,30 @@ return(
        {<Popup open={isTriggered}
                 onClose={()=>setIsTriggered(false)}>
                 <div>Cannot filter by Prerequisites until class and ancestry are selected.</div>
-                <button onClick={()=>setIsTriggered(false)}>Understood</button>
+                <button className="feats-warning-button" onClick={()=>setIsTriggered(false)}>Understood</button>
         </Popup>}
-    </div>
-    <input className="character-diety-searchbar" 
+        </Col>
+    </Row>
+    <Row>
+        <Col xs={{span:12,offset:1}}sm={{span:10,offset:2}}>
+        <input className="character-feat-searchbar text-center" 
                    placeholder='Search by Name,Descriptions or Types'
                    //value is checked to see if we are typing 
                    value={searchField} 
                    onChange = {handleChange}/>
-    </div>
+        </Col>
+    </Row>
+    </Container>
+
     {/** Display and map results and return them as items to the DOM */}
-    {displayResults().map( feat => { return <p key={feat.name}>{feat.name}</p>})}
+    <Row xs={1}sm={2}md={3}lg={4}>
+         {displayResults().map( feat => { 
+            return (
+            <Col key={feat.name}>
+                <p className="feats-ind text-center" onClick={ ()=> handleClick(feat)}><strong>{feat.name}</strong>  - ({feat.system.featType.value.substring(0,1).toUpperCase() + feat.system.featType.value.substring(1)})</p>
+            </Col>
+                )})}
+    </Row>
     </>
 )
 

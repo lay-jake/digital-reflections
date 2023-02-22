@@ -49,7 +49,7 @@ export default function DetailsModal({object,returnSet}){
                 fullscreen={true}
               >
                 <Modal.Header closeButton>
-                  <Modal.Title>{object[0].type === 'ancestry'? 'Select Ancestry':'Select Class'}</Modal.Title>
+                  <Modal.Title>{object[0].type === 'ancestry'? 'Select Ancestry': 'Select Class'}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                   <Stack className='obj-container' direction='horizontal'>

@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react"
+import { Col, Row } from "react-bootstrap";
 import FeatsFilter from "./FeatsFilter";
+import './FeatsLibrary.css'
+import FeatsModal from "./FeatsModal";
 
 
-export default function FeatsLibrary({feats, fetchFeats,selectedClass,selectedAncestry,characterLevel}){
+export default function FeatsLibrary({feats, fetchFeats,selectedClass,selectedAncestry,characterLevel,characterStats}){
 
 const [selectedFeat,setSelected] = useState([]);
 const [knownFeats,setKnownFeats] = useState([])
+const [isModalOpen, setIsOpen] = useState(false);
 
 useEffect( () => {
     //We check to see if we have already loaded feats previous into store by checking length of feats prop.
@@ -13,16 +17,32 @@ useEffect( () => {
     if(!feats.length){
     fetchFeats()
     }
-},[])
+},[feats.length,fetchFeats])
+
+
+const handleSelection = (feat) =>{
+    setSelected(feat);
+    setIsOpen(true)
+}
+
+const closeModal = () => {
+    setIsOpen(false);
+  }
 
 
 if(feats.length <= 0){
     return(<p>ITS LOADING OKAAAAY!?</p>)
 } else {
 return(
-    <>
-    <p>Feats have loaded?</p>
-    <FeatsFilter featList={feats} selectedClass={selectedClass} selectedAncestry={selectedAncestry} characterLevel={characterLevel}/>
-    </>
+    <div className={'feats-list-main'}>
+    <Row>
+        <Col>
+           <FeatsFilter featList={feats} 
+                        selectedClass={selectedClass} selectedAncestry={selectedAncestry} characterLevel={characterLevel}
+                        setSelected={handleSelection} characterStats={characterStats}/>
+         </Col>
+    </Row>
+    {selectedFeat && <FeatsModal selectedFeat={selectedFeat} isOpen={isModalOpen} closeModal={closeModal}/>}
+    </div>
 )
 }}
