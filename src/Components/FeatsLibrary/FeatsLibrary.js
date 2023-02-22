@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react"
+import FeatsFilter from "./FeatsFilter";
 
 
-
-
-
-export default function FeatsLibrary({feats, fetchFeats}){
+export default function FeatsLibrary({feats, fetchFeats,selectedClass,selectedAncestry,characterLevel}){
 
 const [selectedFeat,setSelected] = useState([]);
 const [knownFeats,setKnownFeats] = useState([])
@@ -24,9 +22,7 @@ if(feats.length <= 0){
 return(
     <>
     <p>Feats have loaded?</p>
-
-    {feats.map((feat)=>{return<p key={feat.name}>{feat.name}</p>})}
-    {console.log(feats)}
+    <FeatsFilter featList={feats} selectedClass={selectedClass} selectedAncestry={selectedAncestry} characterLevel={characterLevel}/>
     </>
 )
 }}
