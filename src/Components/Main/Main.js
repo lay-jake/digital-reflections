@@ -5,6 +5,7 @@ import './main.css'
 import { Link, Navigate, Route,Routes} from "react-router-dom"
 import CharacterOverview from "../CharacterOverview/CharacterOverview"
 import FeatsLibrary from "../FeatsLibrary/FeatsLibrary"
+import NavigationTabs from "../NavigationTabs/NavigationTabs"
 
 /**
  * 
@@ -72,7 +73,7 @@ class Main extends Component{
 
     return(
         <div>
-        <header> Fancy header going to go here eventually but for now click to go to feats{<Link to='/feats'> F E A T S</Link>} or click to go back {<Link to='/overview'>  O V E R V I E W</Link>}  so we can test data storage</header>
+        <NavigationTabs/>
         <Routes>
             {/** Routing option here forces users to the overview Route on load. */}
           <Route exact path='' element={<Navigate to='/overview'/>}/>

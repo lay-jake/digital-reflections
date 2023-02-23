@@ -1,0 +1,27 @@
+.nav-link-tab{
+    border-right: 1px solid black;
+    min-height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-link-text{
+    color: black;
+    text-decoration: none;
+}
+.active{
+    /* background-color: #afc1cc; */
+    box-shadow: 0px .5px 6px 0px inset black;
+}
+.nav-link-group{
+    margin-top: 1px;
+    min-height: 50px;
+    border: 1px solid black;
+    border-right: 0px;
+    border-bottom: 0px;
+    color: #000000d8;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #afc2cb;
+}
