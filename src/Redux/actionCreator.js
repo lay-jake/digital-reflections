@@ -113,6 +113,13 @@ export const addFeats = (feats) =>({
        }
     )
 
+export const selectFeat = (feat) =>({
+    type: ActionTypes.SELECT_FEAT,
+    payload:feat
+    }
+)    
+
+
 export const fetchFeats = (dispatch) =>{
     return dispatch => {
         dispatch(featsLoading());

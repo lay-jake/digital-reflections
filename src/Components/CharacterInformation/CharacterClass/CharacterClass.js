@@ -1,6 +1,6 @@
 import React from 'react';
 import './CharacterClass.css'
-import DetailsModal from '../DetailsModal/DetailsModal';
+import DetailsModal from '../../DetailsModal/DetailsModal';
 import { Container,Col,Row } from 'react-bootstrap';
 
 export default function CharacterClass({characterClasses,chooseClass,selectedClass}){

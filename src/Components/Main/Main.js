@@ -1,8 +1,8 @@
 import { Component } from "react"
-import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety, fetchFeats } from "../../Redux/actionCreator"
+import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
-import { Link, Navigate, Route,Routes} from "react-router-dom"
+import {Navigate, Route,Routes} from "react-router-dom"
 import CharacterOverview from "../CharacterOverview/CharacterOverview"
 import FeatsLibrary from "../FeatsLibrary/FeatsLibrary"
 import NavigationTabs from "../NavigationTabs/NavigationTabs"
@@ -47,7 +47,7 @@ const mapDispatchToProps = (dispatch) => ({
 
     //connecting Redux FEAT actions to props
     fetchFeats: () => {dispatch(fetchFeats())},
-
+    selectFeat: (selectedFeat) => {dispatch(selectFeat(selectedFeat))},
 })
 
 
@@ -86,14 +86,16 @@ class Main extends Component{
                                 characterAncestries = {this.props.characterAncestries} selectAncestry={this.props.selectAncestry} selectedAncestry={this.props.characterAncestries.selectedAncestry}
                                 characterDieties={this.props.characterDieties} selectDiety={this.props.selectDiety}
                                 characterLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}
-                                characterStats={this.props.characterStats} adjustStat={this.props.adjustStat}/> : <></>}/>
+                                characterStats={this.props.characterStats} adjustStat={this.props.adjustStat}
+                                knownFeats={this.props.featsLibrary.selectedFeats}/> : <></>}/>
                                 
 
             <Route exact path='/feats' 
                          element={<FeatsLibrary 
                                 feats={this.props.featsLibrary.feats} fetchFeats={this.props.fetchFeats}
                                 selectedClass={this.props.characterClasses.selectedClass} selectedAncestry={this.props.characterAncestries.selectedAncestry} 
-                                characterLevel={this.props.characterLevel.characterLevel} characterStats={this.props.characterStats}/>} />                    
+                                characterLevel={this.props.characterLevel.characterLevel} characterStats={this.props.characterStats}
+                                selectFeat={this.props.selectFeat}/>} />                    
         </Routes> 
         </div>
     )}

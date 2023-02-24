@@ -92,10 +92,10 @@ return(
     <>
     <Container>
     <Row>
-        <Col xs={{span:12,offset:2}}sm={{span:12,offset:5}}>
+        <Col xs={{span:12,offset:2}}sm={{span:4,offset:5}}>
        <label className="extra-option-search">
-            <input type='checkbox' title="Only show feats you have met the prerequisites for." checked={meetPrerequisites} value={meetPrerequisites} onChange={ () => handleCheckbox()}/>
-            Meet Prerequisites
+            <input type='checkbox' title="Only show feats you have met the prerequisites for This is a WIP" checked={meetPrerequisites} value={meetPrerequisites} onChange={ () => handleCheckbox()}/>
+            Meet Prerequisites (WIP)
        </label>
        {/** popup is used to warn user they do not have required info filled in. */}
        {<Popup open={isTriggered}

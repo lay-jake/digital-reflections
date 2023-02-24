@@ -1,8 +1,10 @@
+import { Action } from '@remix-run/router'
 import * as ActionTypes from './actionTypes'
 
 export const FeatsLibrary = (state ={
     feats:[],
-    isLoading:false
+    isLoading:false,
+    selectedFeats:[]
 }, action) =>{
     switch(action.type){
           /**
@@ -15,6 +17,8 @@ export const FeatsLibrary = (state ={
             return {...state, isLoading:false,feats:action.payload.results}
         case ActionTypes.LOADING_FEATS:
             return {...state, isLoading:true}
+        case ActionTypes.SELECT_FEAT:
+            return {...state,selectedFeats:[...state.selectedFeats, action.payload]}    
         default:
             return state        
     }

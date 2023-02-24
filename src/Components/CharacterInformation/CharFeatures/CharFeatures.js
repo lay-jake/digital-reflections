@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from "react"
 import { Container, Row,Col, Modal} from "react-bootstrap"
-import instance from "../../Shared/api"
+import instance from "../../../Shared/api"
 import './CharFeatures.css'
 
 export default function CharFeatures({selectedClass, characterLevel}){
@@ -41,8 +41,10 @@ export default function CharFeatures({selectedClass, characterLevel}){
         <>
         {selectedClass && characterLevel &&
         <Container >
-            <Row xs={2}>
-            <h2 className='text-center subtitle-text'>Class Features</h2>
+            <Row>
+                <Col xs={{span:8,offset:3}} sm={{span:8,offset:2}}>
+                    <h2 className='subtitle-text'>Class Features</h2>
+                </Col>
             </Row>
             <Row>
                 <Col xs={6}>

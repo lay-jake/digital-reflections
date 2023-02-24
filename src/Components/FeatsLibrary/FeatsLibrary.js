@@ -5,10 +5,9 @@ import './FeatsLibrary.css'
 import FeatsModal from "./FeatsModal";
 
 
-export default function FeatsLibrary({feats, fetchFeats,selectedClass,selectedAncestry,characterLevel,characterStats}){
+export default function FeatsLibrary({feats, fetchFeats,selectedClass,selectedAncestry,characterLevel,characterStats,selectFeat}){
 
 const [selectedFeat,setSelected] = useState([]);
-const [knownFeats,setKnownFeats] = useState([])
 const [isModalOpen, setIsOpen] = useState(false);
 
 useEffect( () => {
@@ -18,7 +17,6 @@ useEffect( () => {
     fetchFeats()
     }
 },[feats.length,fetchFeats])
-
 
 const handleSelection = (feat) =>{
     setSelected(feat);
@@ -31,7 +29,7 @@ const closeModal = () => {
 
 
 if(feats.length <= 0){
-    return(<p>ITS LOADING OKAAAAY!?</p>)
+    return(<p>ITS LOADING OKAAAAY!? I'll make this prettier later</p>)
 } else {
 return(
     <div className={'feats-list-main'}>
@@ -42,7 +40,7 @@ return(
                         setSelected={handleSelection} characterStats={characterStats}/>
          </Col>
     </Row>
-    {selectedFeat && <FeatsModal selectedFeat={selectedFeat} isOpen={isModalOpen} closeModal={closeModal}/>}
+    {selectedFeat && <FeatsModal selectedFeat={selectedFeat} isOpen={isModalOpen} closeModal={closeModal} selectFeat={selectFeat}/>}
     </div>
 )
 }}

@@ -2,11 +2,11 @@ import parse from 'html-react-parser';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function FeatsModal({selectedFeat,isOpen,closeModal}){
+export default function FeatsModal({selectedFeat,isOpen,closeModal,selectFeat}){
     const parse = require('html-react-parser');
 
     function handleSubmit() {
-        {/** TO BE COMPLETED TO ADD FEAT TO CAHRACTER FEAT LIST */}
+        selectFeat(selectedFeat);
         closeModal();
     }
 
@@ -31,13 +31,11 @@ export default function FeatsModal({selectedFeat,isOpen,closeModal}){
                         <Button variant="secondary" onClick={closeModal}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={()=> handleSubmit()}>
+                        <Button variant="primary" onClick={handleSubmit}>
                             Add Feat
                         </Button>
                 </Modal.Footer>
               </Modal>
-        
-        
         </>)
     }else{
     return(

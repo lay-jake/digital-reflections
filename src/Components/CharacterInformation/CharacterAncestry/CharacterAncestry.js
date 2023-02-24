@@ -1,4 +1,4 @@
-import DetailsModal from '../DetailsModal/DetailsModal'
+import DetailsModal from '../../DetailsModal/DetailsModal'
 import React from 'react'
 import './CharacterAncestry.css'
 import { Row,Col, Container } from 'react-bootstrap'

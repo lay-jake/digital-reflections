@@ -1,13 +1,14 @@
-import CharacterClass from "../CharacterClass/CharacterClass"
-import CharacterName from "../CharacterName/CharacterName"
-import CharacterLevel from "../CharacterLevel/CharacterLevel"
-import CharacterStat from "../CharacterStat/CharacterStat"
+import CharacterClass from "../CharacterInformation/CharacterClass/CharacterClass"
+import CharacterName from "../CharacterInformation/CharacterName/CharacterName"
+import CharacterLevel from "../CharacterInformation/CharacterLevel/CharacterLevel"
+import CharacterStat from "../CharacterInformation/CharacterStat/CharacterStat"
 import './CharacterOverview.css'
-import CharacterAncestry from "../CharacterAncestry/CharacterAncestry"
-import CharacterDetails from "../CharacterDetails/characterDetails"
-import CharacterDiety from "../CharacterDiety/CharacterDiety"
+import CharacterAncestry from "../CharacterInformation/CharacterAncestry/CharacterAncestry"
+import CharacterDetails from "../CharacterInformation/CharacterDetails/characterDetails"
+import CharacterDiety from "../CharacterInformation/CharacterDiety/CharacterDiety"
 import { Container,Row, Col } from "react-bootstrap"
-import CharFeatures from "../CharFeatures/CharFeatures"
+import CharFeatures from "../CharacterInformation/CharFeatures/CharFeatures"
+import CharacterFeats from "../CharacterInformation/CharacterFeats/CharacterFeats"
 
 
 export default function CharacterOverview (
@@ -15,7 +16,8 @@ export default function CharacterOverview (
     characterAncestries,selectAncestry,
     characterDieties,selectDiety,
     characterLevel,adjustLevel,
-    characterStats,adjustStat}){
+    characterStats,adjustStat,
+    knownFeats}){
 
     return(
         <>
@@ -105,7 +107,14 @@ export default function CharacterOverview (
             </Row>    
         </Container>}
         <Container>
-            <CharFeatures selectedClass={characterClasses.selectedClass} characterLevel={characterLevel} />
+            <Row xs={1} sm={1}>
+                <Col md={{span:5,offset: 1}}>
+                    <CharFeatures selectedClass={characterClasses.selectedClass} characterLevel={characterLevel} />
+                </Col>
+                <Col md={{span:5,offset:1}}>
+                    <CharacterFeats knownFeats={knownFeats} />
+                </Col>
+            </Row>
         </Container>
         </div>
         </>
