@@ -23,13 +23,27 @@ Character sheet is powered by the public api hosted at [https://api.pathfinder2.
 
 ✅ Character HP affected by appropiate bonus stat
 
+✅  Access feat list via API
+
+✅ Class features available by level
+
+✅ Add Feats to Character
 
 ## To Do Items
-❌ Class features available by level
 
-❌ Access feat list via API
+❌ Add Spellbooks to sheet
 
-❌ Add Feats to Character
+❌ Player can select spells
+
+❌ Spells can be assigned usages and can be expended/tracked
+
+❌ Add Equipment tab to sheet
+
+❌ Equipment affects appropiate stats (AC, movespeed, to hit)
+
+❌ See if Magical Items can be implemented?
+
+❌ Loading screen/icons when calling API when needed
 
 ❌ Feats affect appropiate stats
 
