@@ -112,7 +112,7 @@ export default function CharacterOverview (
                     <CharFeatures selectedClass={characterClasses.selectedClass} characterLevel={characterLevel} />
                 </Col>
                 <Col md={{span:5,offset:1}}>
-                    <CharacterFeats knownFeats={knownFeats} />
+                    {characterClasses.selectedClass && <CharacterFeats knownFeats={knownFeats} />}
                 </Col>
             </Row>
         </Container>

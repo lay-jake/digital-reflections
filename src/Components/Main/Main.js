@@ -6,6 +6,7 @@ import {Navigate, Route,Routes} from "react-router-dom"
 import CharacterOverview from "../CharacterOverview/CharacterOverview"
 import FeatsLibrary from "../FeatsLibrary/FeatsLibrary"
 import NavigationTabs from "../NavigationTabs/NavigationTabs"
+import Notes from "../Notes/Notes"
 
 /**
  * 
@@ -95,7 +96,10 @@ class Main extends Component{
                                 feats={this.props.featsLibrary.feats} fetchFeats={this.props.fetchFeats}
                                 selectedClass={this.props.characterClasses.selectedClass} selectedAncestry={this.props.characterAncestries.selectedAncestry} 
                                 characterLevel={this.props.characterLevel.characterLevel} characterStats={this.props.characterStats}
-                                selectFeat={this.props.selectFeat}/>} />                    
+                                selectFeat={this.props.selectFeat}/>} /> 
+                                
+            <Route exact path='notes'
+                        element={<Notes/>}/>                                       
         </Routes> 
         </div>
     )}
