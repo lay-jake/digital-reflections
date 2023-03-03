@@ -1,4 +1,3 @@
-import { Action } from '@remix-run/router'
 import * as ActionTypes from './actionTypes'
 
 export const FeatsLibrary = (state ={

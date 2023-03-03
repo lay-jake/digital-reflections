@@ -1,5 +1,6 @@
 import { Component } from "react"
-import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat } from "../../Redux/actionCreator"
+import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,
+         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
 import {Navigate, Route,Routes} from "react-router-dom"
@@ -21,7 +22,8 @@ const mapStateToProps = state => {
         characterStats: state.characterStats,
         characterAncestries: state.characterAncestries,
         characterDieties: state.characterDieties,
-        featsLibrary: state.featsLibrary
+        featsLibrary: state.featsLibrary,
+        notes:state.notes,
     }
 }
 
@@ -49,10 +51,11 @@ const mapDispatchToProps = (dispatch) => ({
     //connecting Redux FEAT actions to props
     fetchFeats: () => {dispatch(fetchFeats())},
     selectFeat: (selectedFeat) => {dispatch(selectFeat(selectedFeat))},
+
+    //connecting Redux NOTE actions to props
+    addNote: (note) => {dispatch(addNote(note))},
+    deleteNote: (note) => {dispatch(deleteNote(note))},
 })
-
-
-        
 
 
 class Main extends Component{
@@ -97,9 +100,9 @@ class Main extends Component{
                                 selectedClass={this.props.characterClasses.selectedClass} selectedAncestry={this.props.characterAncestries.selectedAncestry} 
                                 characterLevel={this.props.characterLevel.characterLevel} characterStats={this.props.characterStats}
                                 selectFeat={this.props.selectFeat}/>} /> 
-                                
+
             <Route exact path='notes'
-                        element={<Notes/>}/>                                       
+                        element={<Notes addNote={this.props.addNote} notes={this.props.notes} deleteNote={this.props.deleteNote}/>}/>                                       
         </Routes> 
         </div>
     )}

@@ -160,3 +160,16 @@ export const getStat = (stat) =>({
     payload:stat
    }
 )
+
+/** Actions for Character NOTES handling */
+export const addNote = (note) =>({
+    type: ActionTypes.ADD_NOTE,
+    payload:note
+   }
+)
+
+export const deleteNote = (note) =>({
+    type: ActionTypes.DELETE_NOTE,
+    payload:note
+   }
+)

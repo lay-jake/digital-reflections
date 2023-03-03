@@ -31,3 +31,7 @@ export const GET_LEVEL = 'GET_LEVEL'
 //* Setting up Action types for Character STATS store info*/
 export const ADJUST_STAT ='ADJUST_STAT'
 export const GET_STAT = 'GET_STAT'
+
+//* Setting up Action types for Character STATS store info*/
+export const ADD_NOTE ='ADD_NOTE'
+export const DELETE_NOTE ='DELETE_NOTE'
