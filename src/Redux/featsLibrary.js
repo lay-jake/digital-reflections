@@ -12,7 +12,6 @@ export const FeatsLibrary = (state ={
          * RETURNS - Assigns array to Store, changes loading to false.
          */
         case ActionTypes.ADD_FEATS:
-            console.log(action.payload)
             return {...state, isLoading:false,feats:action.payload.results}
         case ActionTypes.LOADING_FEATS:
             return {...state, isLoading:true}

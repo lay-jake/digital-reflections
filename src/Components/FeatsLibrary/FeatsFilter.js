@@ -30,7 +30,6 @@ const handleCheckbox = () =>{
     }
 }    
 
-console.log(characterStats)
 //handles the input field, updates as typed
 const handleChange = e => {
     setSearchField(e.target.value);

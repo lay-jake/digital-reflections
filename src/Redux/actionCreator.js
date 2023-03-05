@@ -94,6 +94,25 @@ export const fetchAncestries = (dispatch) =>{
     .then( res => {dispatch(addAncestries(res.data))})
     //TO DO - More indepth error handling.
     .catch( error => console.log(error.message))
+    }
+}
+
+export const addAncestryFeature = (feature) => ({
+    type: ActionTypes.ADD_ANCESTRY_FEATURE,
+    payload: feature
+})
+
+export const deleteAncestryFeatures = () => ({
+    type: ActionTypes.DELETE_ANCESTRY_FEATURES
+})
+export const getAncestryFeature = (uuid,dispatch) =>{
+    return dispatch => {
+        dispatch(ancestriesLoading());
+    
+    instance.get(`ancestryFeature?_id=${uuid}`)
+    .then( res => {dispatch(addAncestryFeature(res.data.results))})
+    //TO DO - More indepth error handling.
+    .catch( error => console.log(error.message))
 }}
 
 

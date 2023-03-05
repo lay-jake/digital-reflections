@@ -1,6 +1,6 @@
 import { Component } from "react"
 import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,
-         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote } from "../../Redux/actionCreator"
+         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote,getAncestryFeature,deleteAncestryFeatures } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
 import {Navigate, Route,Routes} from "react-router-dom"
@@ -27,6 +27,7 @@ const mapStateToProps = state => {
     }
 }
 
+
 const mapDispatchToProps = (dispatch) => ({
     //connecting Redux class actions to props
     fetchClasses: () => {dispatch(fetchClasses())},
@@ -43,6 +44,8 @@ const mapDispatchToProps = (dispatch) => ({
      //connecting Redux ancestry actions to props
      fetchAncestries: () => {dispatch(fetchAncestries())},
      selectAncestry: (selectedAncestry) => {dispatch(selectAncestry(selectedAncestry))},
+     getAncestryFeature: (ancestryFeature) =>{dispatch(getAncestryFeature(ancestryFeature))},
+     deleteAncestryFeatures: () => {dispatch(deleteAncestryFeatures())},
 
     //connecting Redux dieties actions to props
     fetchDieties: () => {dispatch(fetchDieties())},
@@ -74,7 +77,7 @@ class Main extends Component{
     }
     
     render(){
-
+    this.props.characterAncestries ? console.log(this.props.characterAncestries.ancestryFeatures):console.log('None Selected');
     return(
         <div>
         <NavigationTabs/>
@@ -87,7 +90,8 @@ class Main extends Component{
           <Route exact path= '/overview' element={
             this.props.characterClasses.classes.results ?
             <CharacterOverview  characterClasses = {this.props.characterClasses} selectClass={this.props.selectClass}
-                                characterAncestries = {this.props.characterAncestries} selectAncestry={this.props.selectAncestry} selectedAncestry={this.props.characterAncestries.selectedAncestry}
+                                characterAncestries = {this.props.characterAncestries} selectAncestry={this.props.selectAncestry} 
+                                selectedAncestry={this.props.characterAncestries.selectedAncestry} getAncestryFeature={this.props.getAncestryFeature} deleteAncestryFeatures={this.props.deleteAncestryFeatures}
                                 characterDieties={this.props.characterDieties} selectDiety={this.props.selectDiety}
                                 characterLevel={this.props.characterLevel.characterLevel} adjustLevel={this.props.adjustLevel}
                                 characterStats={this.props.characterStats} adjustStat={this.props.adjustStat}

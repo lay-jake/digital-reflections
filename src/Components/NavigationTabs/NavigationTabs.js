@@ -16,7 +16,7 @@ export default function NavigationTabs(){
     const handleClick = (clicked) =>{
         setCurrentPage(clicked);
     }
-console.log(currentPage)
+
 return(
     <>
     <Container  className="nav-link-group">

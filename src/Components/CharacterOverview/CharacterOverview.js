@@ -13,7 +13,7 @@ import CharacterFeats from "../CharacterInformation/CharacterFeats/CharacterFeat
 
 export default function CharacterOverview (
     {characterClasses,selectClass,
-    characterAncestries,selectAncestry,
+    characterAncestries,selectAncestry,getAncestryFeature,deleteAncestryFeatures,
     characterDieties,selectDiety,
     characterLevel,adjustLevel,
     characterStats,adjustStat,
@@ -40,7 +40,8 @@ export default function CharacterOverview (
                             <CharacterClass characterClasses={characterClasses.classes.results} chooseClass={selectClass} selectedClass={characterClasses.selectedClass}/>
                         </Col>
                         <Col sm={12} md={3}>
-                            <CharacterAncestry ancestries={characterAncestries.ancestries.results} selectAncestry={selectAncestry} selectedAncestry={characterAncestries.selectedAncestry}/>
+                            <CharacterAncestry ancestries={characterAncestries.ancestries.results} selectAncestry={selectAncestry} 
+                            selectedAncestry={characterAncestries.selectedAncestry} getAncestryFeature={getAncestryFeature} deleteAncestryFeatures={deleteAncestryFeatures}/>
                         </Col>
                         <Col sm={12} md={3}>
                             <CharacterDiety characterDieties={characterDieties} selectDiety={selectDiety} selectedDiety={characterDieties.selectedDiety}/>

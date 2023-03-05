@@ -3,11 +3,25 @@ import React from 'react'
 import './CharacterAncestry.css'
 import { Row,Col, Container } from 'react-bootstrap'
 
-export default function CharacterAncestry({ancestries,selectAncestry,selectedAncestry}){
+//Prefix for all UUID codes for ancestryFeatures - We are removing it since the API will only take the actual UUID code and we can isolate it this way.
+const UUID_PREFIX = 'Compendium.pf2e.ancestryfeatures.'
+
+export default function CharacterAncestry({ancestries,selectAncestry,selectedAncestry,getAncestryFeature,deleteAncestryFeatures}){
 
     const[defaultShown,setDefaultShown] = React.useState(selectedAncestry ? {text:selectedAncestry.name}:{text:'Select Ancestry'})
 
+
     function returnSet(obj){
+
+        //We check to see if we have selected a new Ancestry, if we have we clear it and add the new ones for a selected race.
+        if (obj !== selectedAncestry){
+            deleteAncestryFeatures();
+        }
+
+        //Get the values for each item in the ancestry array, then isolate the UUID code and send to Store to pull the feature data from the API and add it to the store.
+        Object.values(obj.system.items).forEach((item) => getAncestryFeature(item.uuid.replace(UUID_PREFIX,"")));
+
+
         setDefaultShown({...defaultShown,text:obj.name})
         selectAncestry(obj);
     }
@@ -40,7 +54,6 @@ export default function CharacterAncestry({ancestries,selectAncestry,selectedAnc
                 <option value="Select Ancestry" disabled>Select Ancestry</option>
                 {/**
 
-                onClick={ () => selectAncestry(charAncestry)} 
                 * We map through each of the ancestries returned by the API that are stored in our ancestries which has been passed down as a prop.
                 * Each ancestry is entered as a option using it's name key.
                 */}    

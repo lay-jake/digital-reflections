@@ -7,8 +7,6 @@ export default function Notes({addNote,notes,deleteNote}){
 
     const [isOpen,setIsOpen] = useState(false);
 
-    console.log(notes.Notes)
-
     return(
                 <div className="notes-field-main">
                     <Container>

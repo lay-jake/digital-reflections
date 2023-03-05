@@ -6,6 +6,7 @@ export const CharacterAncestries = (state = {
     ancestries:[],
     isLoading:false,
     selectedAncestry:null,
+    ancestryFeatures:[],
 }, action) => {
     switch(action.type){
         /**
@@ -16,6 +17,24 @@ export const CharacterAncestries = (state = {
 
         case ActionTypes.LOADING_ANCESTRIES:
             return {...state, isLoading:true};
+
+        /**
+         * Action Type - ADDING Ancestry Feature to List
+         * * 
+         * RETURNS - New STATE indicating loading is complete, adding new feature to state
+         * */
+
+        case ActionTypes.ADD_ANCESTRY_FEATURE:
+            return {...state, isLoading:false, ancestryFeatures: state.ancestryFeatures.concat(action.payload)};
+
+          /**
+         * Action Type - DELETE ALL Ancestry Features to listings
+         * * 
+         * RETURNS - New STATE indicating loading is complete, cleared all features in state
+         * */
+
+        case ActionTypes.DELETE_ANCESTRY_FEATURES:
+            return {...state, isLoading:false, ancestryFeatures: []};    
 
          /**
          * Action Type - ADD ANCESTRIES
