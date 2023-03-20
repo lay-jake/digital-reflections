@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Col, Row } from "react-bootstrap";
+import { Loading } from "../Loading/Loading";
 import FeatsFilter from "./FeatsFilter";
 import './FeatsLibrary.css'
 import FeatsModal from "./FeatsModal";
@@ -29,7 +30,11 @@ const closeModal = () => {
 
 
 if(feats.length <= 0){
-    return(<p>ITS LOADING OKAAAAY!? I'll make this prettier later</p>)
+    return(
+    <div className={'feats-list-main'}>
+        <Loading selectedClass={selectedClass}/>
+    </div>
+    )
 } else {
 return(
     <div className={'feats-list-main'}>

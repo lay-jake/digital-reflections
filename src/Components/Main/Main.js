@@ -77,7 +77,7 @@ class Main extends Component{
     }
     
     render(){
-    this.props.characterAncestries ? console.log(this.props.characterAncestries.ancestryFeatures):console.log('None Selected');
+    
     return(
         <div>
         <NavigationTabs/>

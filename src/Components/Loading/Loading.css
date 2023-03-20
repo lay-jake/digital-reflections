@@ -1,0 +1,7 @@
+.loading-area{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    text-align: center;
+    margin-top: 5%;
+}

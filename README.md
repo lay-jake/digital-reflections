@@ -29,6 +29,12 @@ Character sheet is powered by the public api hosted at [https://api.pathfinder2.
 
 ✅ Add Feats to Character
 
+✅ Loading screen/icons when calling API when needed
+
+✅ Note Section
+
+✅ Notes retained throughout session
+
 ## To Do Items
 
 ❌ Add Spellbooks to sheet
@@ -42,8 +48,6 @@ Character sheet is powered by the public api hosted at [https://api.pathfinder2.
 ❌ Equipment affects appropiate stats (AC, movespeed, to hit)
 
 ❌ See if Magical Items can be implemented?
-
-❌ Loading screen/icons when calling API when needed
 
 ❌ Feats affect appropiate stats
 
