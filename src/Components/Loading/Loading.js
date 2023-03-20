@@ -23,7 +23,8 @@ export const Loading = () => {
     <Container className='loading-area'>
         <Row>
             <Col>
-                <img className= 'img-fluid'src={process.env.PUBLIC_URL + image} alt='loading screen'/>
+                {/** Add and remove the line: ( "process.env.PUBLIC_URL" + ) as prefix to image load based on deploying to git (known issue) or if running on localhost */}
+                <img className= 'img-fluid' src={process.env.PUBLIC_URL + image} alt='loading screen'/>
             </Col>
         </Row>
         <Row xs={1}>

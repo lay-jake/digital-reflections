@@ -84,6 +84,7 @@ class Main extends Component{
         <Routes>
             {/** Routing option here forces users to the overview Route on load. */}
           <Route exact path='' element={<Navigate to='/overview'/>}/>
+          <Route exact path='digital-reflections' element={<Navigate to='/overview'/>}/>
            {/** Routing option here will wait to render until class results from fetch are obtained, since it will be undefined otherwise.
             * Might set up a loading screen to send instead of an empty frag.
            */}  

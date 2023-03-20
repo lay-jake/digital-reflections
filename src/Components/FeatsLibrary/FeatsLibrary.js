@@ -34,7 +34,7 @@ if(feats.length <= 0){
     <div className={'feats-list-main'}>
         <Loading selectedClass={selectedClass}/>
     </div>
-    )
+   )
 } else {
 return(
     <div className={'feats-list-main'}>
@@ -47,5 +47,5 @@ return(
     </Row>
     {selectedFeat && <FeatsModal selectedFeat={selectedFeat} isOpen={isModalOpen} closeModal={closeModal} selectFeat={selectFeat}/>}
     </div>
-)
-}}
+)}
+}

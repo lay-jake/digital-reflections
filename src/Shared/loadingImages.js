@@ -17,48 +17,48 @@ const loadingQoutes =[
 const availableImages = [
     {
         class:'barbarian',
-        image:'/assets/loadingImages/loadingBarb.gif'
+        image:'public/assets/loadingRogue.gif'
     },
     {
         class:'bard',
-        image:'/assets/loadingImages/loadingBard.gif'
+        image:'/loadingBard.gif'
     },
     {
         class:'cleric',
-        image:'/assets/loadingImages/loadingCleric.gif'
+        image:'/loadingCleric.gif'
     },
     {
         class:'druid',
-        image:'/assets/loadingImages/loadingDruid.gif'
+        image:'/loadingDruid.gif'
     },
     {
         class:'none',
-        image:'/assets/loadingImages/loadingNone.gif'
+        image:'/loadingNone.gif'
     },
     {
         class:'paladin',
-        image:'/assets/loadingImages/loadingPaladin.gif'
+        image:'/loadingPaladin.gif'
     },
     {
         class:'ranger',
-        image:'/assets/loadingImages/loadingRanger.gif'
+        image:'/loadingRanger.gif'
     },
 
     {
         class:'rogue',
-        image:'/assets/loadingImages/loadingRogue.gif'
+        image:'/loadingRogue.gif'
     },
     {
         class:'summoner',
-        image:'/assets/loadingImages/loadingSummoner.gif'
+        image:'/loadingSummoner.gif'
     },
     {
         class:'witch',
-        image:'/assets/loadingImages/loadingWitch.gif'
+        image:'/loadingWitch.gif'
     },
     {
         class:'wizard',
-        image:'/assets/loadingImages/loadingWiz.gif'
+        image:'/loadingWiz.gif'
     },
 
 ]
