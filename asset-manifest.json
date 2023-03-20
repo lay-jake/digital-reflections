@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/digital-reflections/static/css/main.43184e8e.css",
-    "main.js": "/digital-reflections/static/js/main.10e069c4.js",
+    "main.js": "/digital-reflections/static/js/main.2934bc6e.js",
     "static/js/787.1cea5742.chunk.js": "/digital-reflections/static/js/787.1cea5742.chunk.js",
     "index.html": "/digital-reflections/index.html",
     "main.43184e8e.css.map": "/digital-reflections/static/css/main.43184e8e.css.map",
-    "main.10e069c4.js.map": "/digital-reflections/static/js/main.10e069c4.js.map",
+    "main.2934bc6e.js.map": "/digital-reflections/static/js/main.2934bc6e.js.map",
     "787.1cea5742.chunk.js.map": "/digital-reflections/static/js/787.1cea5742.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.43184e8e.css",
-    "static/js/main.10e069c4.js"
+    "static/js/main.2934bc6e.js"
   ]
 }
