@@ -1,0 +1,11 @@
+.equipment-main{
+    border: 1px solid black;
+    box-shadow: 3px 3px 3px  black;
+    color: #000000d8;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #afc2cb;
+    margin-left: 1%;
+    margin-right: 1%;
+    min-height: 100vh;
+    }

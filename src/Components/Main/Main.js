@@ -8,6 +8,8 @@ import CharacterOverview from "../CharacterOverview/CharacterOverview"
 import FeatsLibrary from "../FeatsLibrary/FeatsLibrary"
 import NavigationTabs from "../NavigationTabs/NavigationTabs"
 import Notes from "../Notes/Notes"
+import { Spells } from "../Spells/Spells"
+import { Equipment } from "../Equipment/Equipment"
 
 /**
  * 
@@ -107,7 +109,11 @@ class Main extends Component{
                                 selectFeat={this.props.selectFeat}/>} /> 
 
             <Route exact path='notes'
-                        element={<Notes addNote={this.props.addNote} notes={this.props.notes} deleteNote={this.props.deleteNote}/>}/>                                       
+                        element={<Notes addNote={this.props.addNote} notes={this.props.notes} deleteNote={this.props.deleteNote}/>}/>
+            <Route exact path='equipment'
+                        element={<Equipment/>}/>
+            <Route exact path='spells'
+                        element={<Spells/>}/>                                                               
         </Routes> 
         </div>
     )}
