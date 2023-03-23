@@ -6,6 +6,7 @@ import { CharacterLevel } from './characterLevel';
 import { CharacterStats } from './characterStats';
 import { FeatsLibrary } from './featsLibrary';
 import { Notes } from './notes';
+import { SpellsLibrary } from './spellLibrary';
 
 export const store = configureStore({
        reducer:{
@@ -16,4 +17,5 @@ export const store = configureStore({
         characterDieties: CharacterDieties,
         featsLibrary:FeatsLibrary,
         notes:Notes,
+        spellsLibrary:SpellsLibrary
        }});

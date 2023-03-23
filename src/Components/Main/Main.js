@@ -1,6 +1,6 @@
 import { Component } from "react"
 import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,
-         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote,getAncestryFeature,deleteAncestryFeatures } from "../../Redux/actionCreator"
+         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote,getAncestryFeature,deleteAncestryFeatures, fetchSpells, selectSpell } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
 import {Navigate, Route,Routes} from "react-router-dom"
@@ -60,6 +60,10 @@ const mapDispatchToProps = (dispatch) => ({
     //connecting Redux NOTE actions to props
     addNote: (note) => {dispatch(addNote(note))},
     deleteNote: (note) => {dispatch(deleteNote(note))},
+
+    //connecting Redux Spell actions to props
+    fetchSpells: (classId) => {dispatch(fetchSpells(classId))},
+    selectSpell: (selectedSpell) => {dispatch(selectSpell(selectedSpell))},
 })
 
 
@@ -113,7 +117,7 @@ class Main extends Component{
             <Route exact path='equipment'
                         element={<Equipment/>}/>
             <Route exact path='spells'
-                        element={<Spells/>}/>                                                               
+                        element={<Spells selectedClass={this.props.characterClasses.selectedClass} fetchSpells={this.props.fetchSpells}/>}/>                                                               
         </Routes> 
         </div>
     )}

@@ -24,6 +24,11 @@ export const ADD_FEATS = 'ADD_FEATS'
 export const LOADING_FEATS = 'LOADING_FEATS'
 export const SELECT_FEAT = 'SELECT_FEAT'
 
+//* Setting up Action types for SPELLBOOK calls*/
+export const FETCH_SPELLS = 'FETCH_SPELLS'
+export const ADD_SPELLS = 'ADD_SPELLS'
+export const LOADING_SPELLS = 'LOADING_SPELLS'
+export const SELECT_SPELL = 'SELECT_SPELL'
 
 
 //* Setting up Action types for Character level store info*/

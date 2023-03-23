@@ -118,7 +118,7 @@ export const getAncestryFeature = (uuid,dispatch) =>{
 
 /**
  * 
- *  Actions for Diety loads
+ *  Actions for Feats loads
  * 
  *  */
 export const featsLoading = () =>({
@@ -192,3 +192,36 @@ export const deleteNote = (note) =>({
     payload:note
    }
 )
+
+
+/**
+ * 
+ *  Actions for Spellbook  loads
+ * 
+ *  */
+export const spellsLoading = () =>({
+    type: ActionTypes.LOADING_SPELLS
+   }
+)
+
+export const addSpells = (spells) =>({
+        type: ActionTypes.ADD_SPELLS,
+        payload:spells
+       }
+    )
+
+export const selectSpell = (spell) =>({
+    type: ActionTypes.SELECT_SPELL,
+    payload:spell
+    }
+)    
+
+
+export const fetchSpells = (spellTradition,dispatch) =>{
+    return dispatch => {
+        dispatch(spellsLoading());
+    instance.get(`spell?system.traditions.value=${spellTradition}`)
+    .then( res => { dispatch(addSpells(res.data.results))})
+    //TO DO - More indepth error handling.
+    .catch( error => console.log(error.message))
+}}
