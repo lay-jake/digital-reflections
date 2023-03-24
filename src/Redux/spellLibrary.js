@@ -2,10 +2,9 @@ import * as ActionTypes from './actionTypes'
 
 export const SpellsLibrary = (state ={
     spells:[],
-    isLoading:false,
+    isLoading:true,
     selectedSpells:[]
 }, action) =>{
-    console.log("Inside of lib")
     switch(action.type){
           /**
          * Action Type - ADD FEAT 
@@ -13,8 +12,8 @@ export const SpellsLibrary = (state ={
          * RETURNS - Assigns array to Store, changes loading to false.
          */
         case ActionTypes.ADD_SPELLS:
-            console.log( action.payload)
-            return {...state, isLoading:false, spells:action.payload.results}
+            console.log(action.payload)
+            return {...state, isLoading:false, spells:action.payload}
         case ActionTypes.LOADING_SPELLS:
             return {...state, isLoading:true}
         case ActionTypes.SELECT_SPELL:

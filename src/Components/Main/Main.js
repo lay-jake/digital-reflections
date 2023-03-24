@@ -26,6 +26,7 @@ const mapStateToProps = state => {
         characterDieties: state.characterDieties,
         featsLibrary: state.featsLibrary,
         notes:state.notes,
+        spellsLibrary: state.spellsLibrary,
     }
 }
 
@@ -117,7 +118,7 @@ class Main extends Component{
             <Route exact path='equipment'
                         element={<Equipment/>}/>
             <Route exact path='spells'
-                        element={<Spells selectedClass={this.props.characterClasses.selectedClass} fetchSpells={this.props.fetchSpells}/>}/>                                                               
+                        element={<Spells selectedClass={this.props.characterClasses.selectedClass} fetchSpells={this.props.fetchSpells} spellsLibrary={this.props.spellsLibrary}/>}/>                                                               
         </Routes> 
         </div>
     )}

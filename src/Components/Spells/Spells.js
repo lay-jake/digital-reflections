@@ -1,11 +1,13 @@
 import React, {useEffect} from 'react'
-import { Container } from 'react-bootstrap'
-import { fetchSpells } from '../../Redux/actionCreator'
+import { Col, Container, Row } from 'react-bootstrap'
+import { Loading } from '../Loading/Loading'
 import './Spells.css'
 
-export const Spells = ({selectedClass,fetchSpells}) => {
+export const Spells = ({selectedClass,fetchSpells,spellsLibrary}) => {
   useEffect(() => {
+    if(selectedClass){
     fetchSpells(spellCastingTradition())
+    }
   }, [selectedClass])
 
  /**
@@ -32,14 +34,49 @@ export const Spells = ({selectedClass,fetchSpells}) => {
       default:
         break;
 }}
+
+
   
-  console.log(selectedClass)
+  console.log(spellsLibrary)
 
-  return (
-      <div className='spells-main'>
-      {selectedClass ? selectedClass.name : 'Class Name Here'}
-      
-      </div>
 
+  if (selectedClass && !spellsLibrary.isLoading){
+    return (
+        <div className='spells-main'>
+          <Container fluid>
+            <Row>
+              <Col>
+                <h1 className='spells-heading'>{selectedClass.name} Repertoire</h1>
+              </Col>
+            </Row>
+            <Row xs={2} md={4} lg={6}>  
+              {spellsLibrary.spells.map( spell => {
+                return (
+                  <Col key={spell.id} className="spells-ind">
+                    <Row>
+                      <p>{`${spell.name} - (${spell.system.components.material ? ' M' : ''} ${spell.system.components.verbal ? 'V' : ''} ${spell.system.components.somatic ? 'S' : ''} )`}</p>
+                    </Row>
+                    <Row>
+                      <p> {`Spell Level: ${spell.system.level.value}`}</p>
+                    </Row>
+                  </Col>
+                )
+              })}
+            </Row>
+          </Container>
+        </div>
   )
+}else if (!selectedClass){
+  return(
+    <div className='spells-main'>
+      <h1 className='text-center'> Class Must be Selected before Spell Repertoire can be loaded.</h1>
+    </div>
+  )
+}else{
+    return (
+      <div className='spells-main'>
+          <Loading/>
+      </div>
+  )
+  }
 }
