@@ -11,7 +11,7 @@ export default function FeatsModal({selectedFeat,isOpen,closeModal,selectFeat}){
     }
 
     if(selectedFeat.system){
-        console.log(selectedFeat)
+
         return(<>
          <Modal
                 show={isOpen}

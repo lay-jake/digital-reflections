@@ -118,7 +118,8 @@ class Main extends Component{
             <Route exact path='equipment'
                         element={<Equipment/>}/>
             <Route exact path='spells'
-                        element={<Spells selectedClass={this.props.characterClasses.selectedClass} fetchSpells={this.props.fetchSpells} spellsLibrary={this.props.spellsLibrary}/>}/>                                                               
+                        element={<Spells selectedClass={this.props.characterClasses.selectedClass} fetchSpells={this.props.fetchSpells} spellsLibrary={this.props.spellsLibrary}
+                        selectSpell={this.props.selectSpell}/>}/>                                                               
         </Routes> 
         </div>
     )}

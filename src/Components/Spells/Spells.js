@@ -1,9 +1,19 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { Loading } from '../Loading/Loading'
 import './Spells.css'
+import SpellsModal from './SpellsModal'
 
-export const Spells = ({selectedClass,fetchSpells,spellsLibrary}) => {
+export const Spells = ({selectedClass,fetchSpells,spellsLibrary,selectSpell}) => {
+
+  const [selectedSpell,setSelectedSpell] = useState([]);
+  const [isModalOpen, setIsOpen] = useState(false);
+  
+  /**
+   * On comp load will use the selected class to call API and try and pull all spells related to that classes spell casting ability.
+   * No support currently for anything outside of the four main schools.
+   * 
+   *  */  
   useEffect(() => {
     if(selectedClass){
     fetchSpells(spellCastingTradition())
@@ -35,12 +45,18 @@ export const Spells = ({selectedClass,fetchSpells,spellsLibrary}) => {
         break;
 }}
 
+const handleClick = (spell) => {
+  setSelectedSpell(spell);
+  setIsOpen(true)
+}
 
-  
+const closeModal = () =>{
+  setIsOpen(false);
+}
+
   console.log(spellsLibrary)
 
-
-  if (selectedClass && !spellsLibrary.isLoading){
+  if (selectedClass && !spellsLibrary.isLoading && (spellsLibrary.spells.length > 0)){
     return (
         <div className='spells-main'>
           <Container fluid>
@@ -52,7 +68,7 @@ export const Spells = ({selectedClass,fetchSpells,spellsLibrary}) => {
             <Row xs={2} md={4} lg={6}>  
               {spellsLibrary.spells.map( spell => {
                 return (
-                  <Col key={spell.id} className="spells-ind">
+                  <Col key={spell.id} className="spells-ind" onClick={() => handleClick(spell)}>
                     <Row>
                       <p>{`${spell.name} - (${spell.system.components.material ? ' M' : ''} ${spell.system.components.verbal ? 'V' : ''} ${spell.system.components.somatic ? 'S' : ''} )`}</p>
                     </Row>
@@ -64,12 +80,20 @@ export const Spells = ({selectedClass,fetchSpells,spellsLibrary}) => {
               })}
             </Row>
           </Container>
+          {selectedSpell && <SpellsModal selectedSpell={selectedSpell} isOpen={isModalOpen} closeModal={closeModal} selectSpell={selectSpell}/>}
         </div>
   )
 }else if (!selectedClass){
   return(
     <div className='spells-main'>
       <h1 className='text-center'> Class Must be Selected before Spell Repertoire can be loaded.</h1>
+    </div>
+  )
+
+}else if (spellsLibrary.spells.length === 0){
+  return(
+    <div className='spells-main'>
+      <h1 className='text-center'> Currently no support for {selectedClass.name} spellbook, sorry.</h1>
     </div>
   )
 }else{
