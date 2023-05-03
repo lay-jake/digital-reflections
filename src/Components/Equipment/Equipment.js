@@ -3,6 +3,6 @@ import './Equipment.css'
 
 export const Equipment = () => {
   return (
-    <div className='equipment-main'>Equipment</div>
+    <div className='equipment-main'>Equipment in Progress</div>
   )
 }

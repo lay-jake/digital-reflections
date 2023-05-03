@@ -120,7 +120,7 @@ return(
          {displayResults().map( feat => { 
             return (
             <Col key={feat.name}>
-                <p className="feats-ind text-center" onClick={ ()=> handleClick(feat)}><strong>{feat.name}</strong>  - ({feat.system.featType.value.substring(0,1).toUpperCase() + feat.system.featType.value.substring(1)})</p>
+                <p className="feats-ind text-center" onClick={ ()=> handleClick(feat)}><strong>{feat.name}</strong>  - ({feat.system.actionType.value.substring(0,1).toUpperCase() + feat.system.actionType.value.substring(1)})</p>
             </Col>
                 )})}
     </Row>
