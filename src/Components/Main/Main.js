@@ -1,6 +1,7 @@
 import { Component } from "react"
 import { adjustLevel, fetchClasses,getLevel,selectClass,getStat, adjustStat,fetchAncestries,
-         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote,getAncestryFeature,deleteAncestryFeatures, fetchSpells, selectSpell } from "../../Redux/actionCreator"
+         selectAncestry, fetchDieties, selectDiety, fetchFeats, selectFeat, addNote, deleteNote,
+         getAncestryFeature,deleteAncestryFeatures, fetchSpells, selectSpell } from "../../Redux/actionCreator"
 import {connect} from 'react-redux'
 import './main.css'
 import {Navigate, Route,Routes} from "react-router-dom"

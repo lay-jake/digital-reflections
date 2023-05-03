@@ -19,17 +19,17 @@ export default function DetailsModal({object,returnSet}){
 
     }
     function openModal() {
-        setIsOpen(true);
-      }
-    
-    
-      function closeModal() {
-        setIsOpen(false);
-      }
+      setIsOpen(true);
+    }
+  
+  
+    function closeModal() {
+      setIsOpen(false);
+    }
 
-     function showDetails(chosenObj){
-        setDisplayedObj(chosenObj);
-     }
+   function showDetails(chosenObj){
+      setDisplayedObj(chosenObj);
+   }
 
     return(
 
